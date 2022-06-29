@@ -95,7 +95,7 @@ public class Noeud {
 
 	@Override
 	public String toString() {
-		return "Noeud [stagiaire=" + stagiaire + ", filsGauche=" + filsGauche + ", filsDroit=" + filsDroit;
+		return "*****Lecture Noeud*****\n"+ stagiaire + "\t Index Gauche " + filsGauche + "\t Index Droit " + filsDroit;
 	}
 
 	public static Noeud lectureNoeud(RandomAccessFile raf) throws IOException {

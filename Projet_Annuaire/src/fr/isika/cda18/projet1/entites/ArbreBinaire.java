@@ -1,12 +1,16 @@
 package fr.isika.cda18.projet1.entites;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.util.ArrayList;
 import java.util.List;
+
 public class ArbreBinaire {
+
 	static List<Stagiaire> stagiaires = new ArrayList<>();
+
 	public void importFichier() {
 		try {
 			FileReader fr = new FileReader("src/mesFichiers/STAGIAIRES_V2.DON");
@@ -28,31 +32,28 @@ public class ArbreBinaire {
 			ex.printStackTrace();
 		}
 	}
-	
-					
-					
-					
-					
+
 	public void chercherStagiaire(RandomAccessFile raf, String StagiaireAChercher) {
 		try {
 			raf.seek(0);
 			Noeud.chercherStagiaire(StagiaireAChercher, raf);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
-		
+
 	}
-	
-	
-	
+
 	public void affichageInfixe(RandomAccessFile raf) throws IOException {
+		
 		if (raf.length() != 0) {
 			raf.seek(0);
 			Noeud.lectureNoeud(raf).affichageInfixe(raf);
 		}
 	}
+
 	public void ajouterRacine(Noeud noeud) throws IOException {
+		
 		RandomAccessFile raf = new RandomAccessFile("src/mesFichiers/listeStagiaires.bin", "rw");
 		if (raf.length() == 0) {
 			raf.seek(0);
@@ -63,9 +64,13 @@ public class ArbreBinaire {
 		}
 		raf.close();
 	}
+
 	public void ajouterStagiaire(RandomAccessFile raf, Noeud stagiaireAjouter) throws IOException {
+		
 		Noeud racine = Noeud.lectureNoeud(raf);
+		
 		if (racine.getStagiaire().getNom().compareTo(stagiaireAjouter.getStagiaire().getNom()) > 0) {
+			
 			if (racine.getFilsGauche() == -1) {
 				raf.seek(raf.getFilePointer() - 8);
 				raf.writeInt((int) (raf.length() / Stagiaire.TAILLE_OBJET_OCTET));

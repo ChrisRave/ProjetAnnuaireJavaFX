@@ -1,8 +1,15 @@
 package fr.isika.cda18.projet1.entites;
+
+
 import java.io.IOException;
+
 import java.io.RandomAccessFile;
+
+
 public class LanceurBinaire {
+	
 	public static void main(String[] args) throws IOException {
+		
 		try {
 			RandomAccessFile raf = new RandomAccessFile("src/mesFichiers/listeStagiaires.bin", "rw");
 			raf.setLength(0);
