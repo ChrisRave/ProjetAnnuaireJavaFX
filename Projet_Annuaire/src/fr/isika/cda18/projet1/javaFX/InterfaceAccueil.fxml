@@ -1,7 +1,98 @@
 <?xml version="1.0" encoding="UTF-8"?>
-	
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
-	
-<BorderPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.isika.cda18.projet1.javaFX.SampleController">
-	<!-- TODO Add Nodes -->
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane prefHeight="483.0" prefWidth="533.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.isika.cda18.projet1.javaFX.SampleController">
+   <center>
+      <BorderPane prefHeight="216.0" prefWidth="533.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
+         <top>
+            <VBox prefHeight="211.0" prefWidth="264.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label alignment="CENTER" prefHeight="49.0" prefWidth="118.0" text="IDENTIFIANT" textFill="#ff5f00">
+                     <font>
+                        <Font name="Microsoft JhengHei Light" size="14.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="50.0" top="50.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label text="MOT DE PASSE" textFill="#ff5f00">
+                     <font>
+                        <Font name="Microsoft JhengHei Light" size="14.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="65.0" top="50.0" />
+                     </VBox.margin>
+                  </Label>
+               </children>
+            </VBox>
+         </top>
+      </BorderPane>
+   </center>
+   <top>
+      <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="94.0" fitWidth="134.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../../../Downloads/Logo-Isika-baseline.png" />
+               </image>
+            </ImageView>
+            <Label alignment="CENTER" prefHeight="60.0" prefWidth="328.0" text="BIENVENUE SUR L'ANNUAIRE DE ISIKA" textFill="#ff5f00">
+               <HBox.margin>
+                  <Insets top="20.0" />
+               </HBox.margin>
+               <font>
+                  <Font name="Microsoft JhengHei Light" size="16.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+   </top>
+   <bottom>
+      <HBox prefHeight="104.0" prefWidth="533.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="btnValider" mnemonicParsing="false" onAction="#btnValiderHandler" prefHeight="49.0" prefWidth="138.0" text="VALIDER">
+               <HBox.margin>
+                  <Insets left="215.0" top="20.0" />
+               </HBox.margin>
+               <font>
+                  <Font name="Microsoft JhengHei Light" size="12.0" />
+               </font>
+            </Button>
+         </children>
+      </HBox>
+   </bottom>
+   <right>
+      <VBox prefHeight="279.0" prefWidth="362.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
+         <children>
+            <Label fx:id="loginMessageLabel" prefHeight="18.0" prefWidth="278.0" />
+            <TextField fx:id="txtIdentifiant" prefHeight="35.0" prefWidth="322.0">
+               <VBox.margin>
+                  <Insets right="40.0" top="40.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="Microsoft JhengHei Light" size="12.0" />
+               </font>
+            </TextField>
+            <PasswordField fx:id="txtPassword" prefHeight="40.0" prefWidth="332.0">
+               <VBox.margin>
+                  <Insets right="40.0" top="40.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="Microsoft JhengHei Light" size="12.0" />
+               </font>
+            </PasswordField>
+         </children>
+      </VBox>
+   </right>
 </BorderPane>

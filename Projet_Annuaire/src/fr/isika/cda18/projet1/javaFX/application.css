@@ -1,1 +1,27 @@
 /* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+Button{
+	
+	 -fx-background-color: 
+        rgb(255, 128, 64),
+        linear-gradient(rgb(235, 167, 122) 0%, rgb(235, 167, 122) 20%, rgb(255, 128, 64) 100%),
+        linear-gradient(rgb(255, 128, 64) 0%, rgb(255, 128, 64) 5%, rgb(255, 128, 64) 50%, rgb(255, 128, 64) 51%, rgb(255, 128, 64) 100%);
+    -fx-background-insets: 0 0 -1 0,0,1;
+    -fx-background-radius: 5,5,4;
+    -fx-border-radius    : 20;
+    -fx-background-radius: 5;
+    -fx-padding          : 5;
+    -fx-text-fill: #242d35;
+    -fx-font-family: "Helvetica";
+    -fx-font-size: 12px;
+    -fx-text-fill: white;
+	
+}
+
+TextField {
+	-fx-background-color:    rgb(192, 192, 192)
+	
+}
+
+PasswordField {
+	-fx-background-color:    rgb(192, 192, 192)
+}		

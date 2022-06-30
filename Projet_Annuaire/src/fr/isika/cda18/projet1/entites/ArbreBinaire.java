@@ -25,7 +25,7 @@ public class ArbreBinaire {
 				br.readLine();
 				stagiaires.add(stagiaire);
 			}
-			System.out.println(stagiaires);
+			System.out.println("*****Liste stagiaires*****\n" + stagiaires);
 			br.close();
 			fr.close();
 		} catch (IOException ex) {

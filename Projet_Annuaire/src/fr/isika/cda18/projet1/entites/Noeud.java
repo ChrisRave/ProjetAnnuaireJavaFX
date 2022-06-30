@@ -15,7 +15,7 @@ public class Noeud {
 	// Constructeur
 	public Noeud(Stagiaire stagiaire, int filsGauche, int filsDroit) {
 		this.stagiaire = stagiaire;
-		this.filsGauche = filsGauche;
+		this.filsGauche = filsGauche; 
 		this.filsDroit = filsDroit;
 	}
 
@@ -84,8 +84,7 @@ public class Noeud {
 				}
 				int filsGauche = raf.readInt();
 				int filsDroit = raf.readInt();
-				System.out
-						.println("Nom :" + nom.trim() + "\t Prenom :" + prenom.trim() + "\t Departement :" + departement
+				System.out.println("Nom :" + nom.trim() + "\t Prenom :" + prenom.trim() + "\t Departement :" + departement
 								+ "\t Promotion :" + promo.trim() + "\t Annee : " + annee + filsDroit + filsGauche);
 			}
 		} catch (FileNotFoundException e) {
@@ -143,7 +142,7 @@ public class Noeud {
 				System.out.println(racine);
 			}
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 	}
@@ -155,6 +154,7 @@ public class Noeud {
 			filsGauche.affichageInfixe(raf);
 		}
 		System.out.println(this);
+		
 		if (this.getFilsDroit() != -1) {
 			raf.seek(this.getFilsDroit() * Stagiaire.TAILLE_OBJET_OCTET);
 			Noeud filsDroit = lectureNoeud(raf);
