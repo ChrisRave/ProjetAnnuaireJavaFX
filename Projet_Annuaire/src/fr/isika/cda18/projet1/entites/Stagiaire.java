@@ -2,7 +2,6 @@
 package fr.isika.cda18.projet1.entites;
 
 public class Stagiaire implements InterfaceTailles {
-	
 
 	String nom;
 	String prenom;
@@ -10,17 +9,18 @@ public class Stagiaire implements InterfaceTailles {
 	String promotion;
 	String annee;
 
-	//Constructeur
-	public Stagiaire(String nom, String prenom, String departement , String promotion, String annee) {
+	// Constructeur
+	public Stagiaire(String nom, String prenom, String departement, String promotion, String annee) {
 		super();
 		this.nom = nom;
 		this.prenom = prenom;
-		this.departement = departement ;
+		this.departement = departement;
 		this.promotion = promotion;
 		this.annee = annee;
-		
+
 	}
-	//Getters et Setters
+
+	// Getters et Setters
 	public String getNom() {
 		return nom;
 	}
@@ -60,8 +60,8 @@ public class Stagiaire implements InterfaceTailles {
 	public void setAnnee(String annee) {
 		this.annee = annee;
 	}
-	
-	//Méthodes Spécifiques
+
+	// Méthodes Spécifiques
 	@Override
 	public String toString() {
 		return "Nom : " + nom + "\t  Prenom : " + prenom + "\t Departement :" + departement + "\t Promotion : "

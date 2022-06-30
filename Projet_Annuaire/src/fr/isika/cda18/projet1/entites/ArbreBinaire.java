@@ -38,14 +38,14 @@ public class ArbreBinaire {
 			raf.seek(0);
 			Noeud.chercherStagiaire(StagiaireAChercher, raf);
 		} catch (IOException e) {
-			
+
 			e.printStackTrace();
 		}
 
 	}
 
 	public void affichageInfixe(RandomAccessFile raf) throws IOException {
-		
+
 		if (raf.length() != 0) {
 			raf.seek(0);
 			Noeud.lectureNoeud(raf).affichageInfixe(raf);
@@ -53,7 +53,7 @@ public class ArbreBinaire {
 	}
 
 	public void ajouterRacine(Noeud noeud) throws IOException {
-		
+
 		RandomAccessFile raf = new RandomAccessFile("src/mesFichiers/listeStagiaires.bin", "rw");
 		if (raf.length() == 0) {
 			raf.seek(0);
@@ -66,11 +66,11 @@ public class ArbreBinaire {
 	}
 
 	public void ajouterStagiaire(RandomAccessFile raf, Noeud stagiaireAjouter) throws IOException {
-		
+
 		Noeud racine = Noeud.lectureNoeud(raf);
-		
+
 		if (racine.getStagiaire().getNom().compareTo(stagiaireAjouter.getStagiaire().getNom()) > 0) {
-			
+
 			if (racine.getFilsGauche() == -1) {
 				raf.seek(raf.getFilePointer() - 8);
 				raf.writeInt((int) (raf.length() / Stagiaire.TAILLE_OBJET_OCTET));
@@ -92,4 +92,23 @@ public class ArbreBinaire {
 			}
 		}
 	}
+
+	public void chercherValeur(Stagiaire valeurAChercher, RandomAccessFile raf) {
+		try {
+			List<Stagiaire> stagiaires = new ArrayList<>();
+			raf.seek(0);
+			Noeud noeud = Noeud.lectureNoeud(raf);
+			noeud.chercherValeur(valeurAChercher, raf, stagiaires);
+		} catch (IOException e) {
+
+			e.printStackTrace();
+		}
+	}
+
+	public Noeud supprimerNoeud(RandomAccessFile raf, Stagiaire stagiaireASupprimer) throws IOException {
+
+		return null;
+
+	}
+
 }

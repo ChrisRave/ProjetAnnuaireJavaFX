@@ -9,6 +9,7 @@ public interface InterfaceTailles {
 	public static final int TAILLE_ANNEE = 4;
 	public static final int TAILLE_FILS_GAUCHE = 4;
 	public static final int TAILLE_FILS_DROIT = 4;
+	public static final int TAILLE_STAGIAIRE = 116; 
 	public static final int TAILLE_OBJET_OCTET = 124;
 	
 }

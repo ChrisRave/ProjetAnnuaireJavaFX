@@ -6,7 +6,7 @@ import java.io.RandomAccessFile;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Noeud {
+public class Noeud implements InterfaceTailles {
 
 	private Stagiaire stagiaire;
 	private int filsGauche;
@@ -15,7 +15,7 @@ public class Noeud {
 	// Constructeur
 	public Noeud(Stagiaire stagiaire, int filsGauche, int filsDroit) {
 		this.stagiaire = stagiaire;
-		this.filsGauche = filsGauche; 
+		this.filsGauche = filsGauche;
 		this.filsDroit = filsDroit;
 	}
 
@@ -84,7 +84,8 @@ public class Noeud {
 				}
 				int filsGauche = raf.readInt();
 				int filsDroit = raf.readInt();
-				System.out.println("Nom :" + nom.trim() + "\t Prenom :" + prenom.trim() + "\t Departement :" + departement
+				System.out
+						.println("Nom :" + nom.trim() + "\t Prenom :" + prenom.trim() + "\t Departement :" + departement
 								+ "\t Promotion :" + promo.trim() + "\t Annee : " + annee + filsDroit + filsGauche);
 			}
 		} catch (FileNotFoundException e) {
@@ -94,7 +95,8 @@ public class Noeud {
 
 	@Override
 	public String toString() {
-		return "*****Lecture Noeud*****\n"+ stagiaire + "\t Index Gauche " + filsGauche + "\t Index Droit " + filsDroit;
+		return "*****Lecture Noeud*****\n" + stagiaire + "\t Index Gauche " + filsGauche + "\t Index Droit "
+				+ filsDroit;
 	}
 
 	public static Noeud lectureNoeud(RandomAccessFile raf) throws IOException {
@@ -142,7 +144,7 @@ public class Noeud {
 				System.out.println(racine);
 			}
 		} catch (Exception e) {
-			
+
 			e.printStackTrace();
 		}
 	}
@@ -154,11 +156,85 @@ public class Noeud {
 			filsGauche.affichageInfixe(raf);
 		}
 		System.out.println(this);
-		
+
 		if (this.getFilsDroit() != -1) {
 			raf.seek(this.getFilsDroit() * Stagiaire.TAILLE_OBJET_OCTET);
 			Noeud filsDroit = lectureNoeud(raf);
 			filsDroit.affichageInfixe(raf);
 		}
 	}
+
+	public List<Stagiaire> chercherValeur(Stagiaire valeurAChercher, RandomAccessFile raf, List<Stagiaire> stagiaires)
+			throws IOException {
+
+		try {
+			if (this.getFilsGauche() != -1) {
+				raf.seek(this.getFilsGauche() * Stagiaire.TAILLE_OBJET_OCTET);
+				Noeud filsGauche = lectureNoeud(raf);
+				filsGauche.chercherValeur(valeurAChercher, raf, stagiaires);
+			}
+			int critere = 0;
+			int verification = 0;
+			if (!(valeurAChercher.getPromotion().equals(""))) {
+				critere++;
+				if (this.getStagiaire().getPromotion().equals(valeurAChercher.getPromotion())) {
+					verification++;
+					if (critere == verification) {
+						stagiaires.add(this.getStagiaire());
+						System.out.println(this);
+					}
+				}
+			}
+			if (!(valeurAChercher.getDepartement().equals(""))) {
+				critere++;
+				if (this.getStagiaire().getDepartement().equals(valeurAChercher.getDepartement())) {
+					verification++;
+					if (critere == verification) {
+						stagiaires.add(this.getStagiaire());
+						System.out.println(this);
+					}
+				}
+			}
+			if (!(valeurAChercher.getPrenom().equals(""))) {
+				critere++;
+				if (this.getStagiaire().getPrenom().equals(valeurAChercher.getPrenom())) {
+					verification++;
+					if (critere == verification) {
+						stagiaires.add(this.getStagiaire());
+						System.out.println(this);
+					}
+				}
+			}
+			if (!(valeurAChercher.getAnnee().equals(""))) {
+				critere++;
+				if (this.getStagiaire().getAnnee().equals(valeurAChercher.getAnnee())) {
+					verification++;
+					if (critere == verification) {
+						stagiaires.add(this.getStagiaire());
+						System.out.println(this);
+					}
+				}
+			}
+
+			if (this.getFilsDroit() != -1) {
+				raf.seek(this.getFilsDroit() * Stagiaire.TAILLE_OBJET_OCTET);
+				Noeud filsDroit = lectureNoeud(raf);
+				filsDroit.chercherValeur(valeurAChercher, raf, stagiaires);
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return stagiaires;
+
+	}
+//	public Noeud noeudSuccesseur() {
+//		if (this.filsDroit == null) {
+//			return this;
+//		}
+//		Noeud noeudCourant = this.filsDroit;
+//		while (noeudCourant.filsGauche !=null) {
+//			noeudCourant = noeudCourant.filsGauche;
+//		}return noeudCourant;
+//		
+//	}
 }
