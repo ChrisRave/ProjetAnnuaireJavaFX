@@ -30,8 +30,7 @@ public class Main extends Application {
 		e.printStackTrace();
 	}
 	}
-	//public static ObservableList<Stagiaire> stagiaires = FXCollections.observableArrayList();
-
+	
 	@Override
 	public void start(Stage primaryStage) {
 		try {

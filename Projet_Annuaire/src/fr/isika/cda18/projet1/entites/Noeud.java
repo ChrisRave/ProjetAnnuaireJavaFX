@@ -57,7 +57,18 @@ public class Noeud implements InterfaceTailles {
 			e.printStackTrace();
 		}
 	}
-
+	public static void ecritureStagiaire(RandomAccessFile raf,Stagiaire stagiaire) throws IOException {
+		try {
+			raf.writeChars(stagiaire.agrandirNom());
+			raf.writeChars(stagiaire.agrandirPrenom());
+			raf.writeChars(stagiaire.getDepartement());
+			raf.writeChars(stagiaire.agrandirPromo());
+			raf.writeChars(stagiaire.getAnnee());
+		
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 	public static void lectureBinaire(RandomAccessFile raf) throws IOException {
 		try {
 			raf.seek(0);
@@ -228,37 +239,86 @@ public class Noeud implements InterfaceTailles {
 		return stagiaires;
 
 	}
-	public Noeud supprimerNoeud(RandomAccessFile raf, Stagiaire stagiaireASupprimer) throws IOException {
 
-		if(stagiaireASupprimer == null ) {
-			return null; 
-			
-		}if (this.getStagiaire().getNom().compareTo(stagiaireASupprimer.getNom())>0) {
-			if (this.filsGauche!= -1) {
+	public void supprimerNoeud(RandomAccessFile raf, Stagiaire stagiaireASupprimer, int indexParent)
+			throws IOException {
+
+		int indexNoeud = (int) ((raf.getFilePointer() - Stagiaire.TAILLE_OBJET_OCTET) / Stagiaire.TAILLE_OBJET_OCTET);
+
+		if (this.getStagiaire().getNom().compareTo(stagiaireASupprimer.getNom()) > 0) {
+			if (this.filsGauche != -1) {
 				raf.seek(this.getFilsGauche() * Stagiaire.TAILLE_OBJET_OCTET);
-				return this.supprimerNoeud(raf, stagiaireASupprimer);
-			}else {
-				return this; 
+				Noeud filsGauche = lectureNoeud(raf);
+				filsGauche.supprimerNoeud(raf, stagiaireASupprimer, indexNoeud);
+
 			}
-			
-		}else {
-			if (this.filsDroit!= -1) {
+
+		} else if (this.getStagiaire().getNom().compareTo(stagiaireASupprimer.getNom()) < 0) {
+			if (this.filsDroit != -1) {
 				raf.seek(this.getFilsDroit() * Stagiaire.TAILLE_OBJET_OCTET);
-				return this.supprimerNoeud(raf, stagiaireASupprimer);
-			}else {
-			return this; 
-		}		
+				Noeud filsDroit = lectureNoeud(raf);
+				filsDroit.supprimerNoeud(raf, stagiaireASupprimer, indexNoeud);
+			}
+
+		} else {
+			this.supprimerRacine(raf, stagiaireASupprimer, indexParent);
+		}
 
 	}
-//	public Noeud noeudSuccesseur() {
-//		if (this.filsDroit == null) {
-//			return this;
-//		}
-//		Noeud noeudCourant = this.filsDroit;
-//		while (noeudCourant.filsGauche !=null) {
-//			noeudCourant = noeudCourant.filsGauche;
-//		}return noeudCourant;
-//		
-//	}
-}
+
+	public Noeud noeudSuccesseur(RandomAccessFile raf) throws IOException {
+		
+		Noeud racine = Noeud.lectureNoeud(raf);
+		if (racine.getFilsDroit() == -1) {
+			raf.seek(raf.getFilePointer() - 4);
+			return null;
+		} else {
+			raf.seek(this.getFilsDroit() * Stagiaire.TAILLE_OBJET_OCTET);
+			Noeud noeudCourant = lectureNoeud(raf);
+			while (noeudCourant.filsGauche != -1) {
+				raf.seek(this.getFilsGauche() * Stagiaire.TAILLE_OBJET_OCTET);
+			
+				return noeudCourant.noeudSuccesseur(raf);
+			}
+		}
+		return racine;
+	}
+
+	private void supprimerRacine(RandomAccessFile raf, Stagiaire stagiaireASupprimer, int indexParent)
+			throws IOException {
+
+		int indexNoeud = (int) ((raf.getFilePointer() - Stagiaire.TAILLE_OBJET_OCTET) / Stagiaire.TAILLE_OBJET_OCTET);
+
+		if (this.filsGauche == -1 && this.filsDroit == -1) {
+			raf.seek(indexParent * TAILLE_OBJET_OCTET);
+			Noeud parent = lectureNoeud(raf);
+			if (parent.stagiaire.getNom().compareTo(stagiaireASupprimer.getNom()) > 0) {
+				raf.seek(raf.getFilePointer() - 8);
+				raf.writeInt(-1);
+			} else {
+				raf.seek(raf.getFilePointer() - 4);
+				raf.writeInt(-1);
+			}
+		} else if (this.filsGauche != -1 && this.filsDroit == -1) {
+			raf.seek(this.getFilsGauche() * Stagiaire.TAILLE_OBJET_OCTET);
+			Noeud filsGauche = lectureNoeud(raf);
+			raf.seek(indexNoeud * Stagiaire.TAILLE_OBJET_OCTET);
+			ecritureBinaire(raf, filsGauche);
+
+		} else if (this.filsGauche == -1 && this.filsDroit != -1) {
+			raf.seek(this.getFilsDroit() * Stagiaire.TAILLE_OBJET_OCTET);
+			Noeud filsDroit = lectureNoeud(raf);
+			raf.seek(indexNoeud * Stagiaire.TAILLE_OBJET_OCTET);
+			ecritureBinaire(raf, filsDroit);
+		} else {
+			raf.seek(indexNoeud* Stagiaire.TAILLE_OBJET_OCTET); 
+			Noeud noeudSuccesseur = noeudSuccesseur(raf); 
+			raf.seek(indexNoeud*Stagiaire.TAILLE_OBJET_OCTET); 
+			ecritureStagiaire(raf, noeudSuccesseur.getStagiaire()); 
+			raf.seek(filsDroit*Stagiaire.TAILLE_OBJET_OCTET); 
+			Noeud noeudDroit = lectureNoeud(raf); 
+			noeudDroit.supprimerNoeud(raf, noeudSuccesseur.getStagiaire(), indexNoeud); 
+		} 
+
+	}
 }

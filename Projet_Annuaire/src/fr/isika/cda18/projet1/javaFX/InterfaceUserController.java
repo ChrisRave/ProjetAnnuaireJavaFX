@@ -61,14 +61,14 @@ public class InterfaceUserController implements Initializable{
 				String annee = txtAnnee.getText();
 			
 				Stagiaire stagiaire = new Stagiaire(nom, prenom, departement, promotion, annee);
-	//			Main.stagiaires.add(stagiaire);
+	
 				Alert alert = new Alert(AlertType.INFORMATION);
 				alert.setTitle("Inscription avec succès");
 				alert.setHeaderText("Bienvenue à ISIKA");
 				alert.setContentText("Félicitation, la session demarre en Septembre 2022");
 				alert.showAndWait();
 				System.out.println("*****Contenu de la liste*****");
-		//		System.out.println(Main.stagiaires); 
+	
 				reinitialisationFormulaire();
 	   }
 			public void reinitialisationFormulaire() {
