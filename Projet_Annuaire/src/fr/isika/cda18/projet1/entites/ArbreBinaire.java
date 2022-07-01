@@ -9,7 +9,7 @@ import java.util.List;
 
 public class ArbreBinaire {
 
-	static List<Stagiaire> stagiaires = new ArrayList<>();
+	public static List<Stagiaire> stagiaires = new ArrayList<>();
 
 	public void importFichier() {
 		try {
@@ -44,12 +44,13 @@ public class ArbreBinaire {
 
 	}
 
-	public void affichageInfixe(RandomAccessFile raf) throws IOException {
-
+	public List<Stagiaire> affichageInfixe(RandomAccessFile raf) throws IOException {
+		List<Stagiaire> stagiaires = new ArrayList<>();
 		if (raf.length() != 0) {
 			raf.seek(0);
-			Noeud.lectureNoeud(raf).affichageInfixe(raf);
+			Noeud.lectureNoeud(raf).affichageInfixe(raf, stagiaires);
 		}
+		return stagiaires;
 	}
 
 	public void ajouterRacine(Noeud noeud) throws IOException {
@@ -105,10 +106,6 @@ public class ArbreBinaire {
 		}
 	}
 
-	public Noeud supprimerNoeud(RandomAccessFile raf, Stagiaire stagiaireASupprimer) throws IOException {
-
-		return null;
-
-	}
+	
 
 }

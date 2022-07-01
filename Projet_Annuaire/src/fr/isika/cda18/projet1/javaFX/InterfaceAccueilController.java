@@ -18,7 +18,7 @@ import javafx.stage.Stage;
 import javafx.scene.control.Label;
 
 
-public class SampleController implements Initializable{
+public class InterfaceAccueilController implements Initializable{
 	
 	@FXML
 	private Button btnValider; 
@@ -60,8 +60,7 @@ public class SampleController implements Initializable{
 		else {
 			
 			loginMessageLabel.setText("Erreur de saisie");
-//			Alert alerte = new Alert(AlertType.INFORMATION);
-//			alerte.setContentText("Les données saisies sont incorrectes");
+
 		}
 		resetForm();
 	}

@@ -149,18 +149,19 @@ public class Noeud implements InterfaceTailles {
 		}
 	}
 
-	public void affichageInfixe(RandomAccessFile raf) throws IOException {
+	public void affichageInfixe(RandomAccessFile raf, List<Stagiaire> stagiaires) throws IOException {
 		if (this.getFilsGauche() != -1) {
 			raf.seek(this.getFilsGauche() * Stagiaire.TAILLE_OBJET_OCTET);
 			Noeud filsGauche = lectureNoeud(raf);
-			filsGauche.affichageInfixe(raf);
+			filsGauche.affichageInfixe(raf, stagiaires);
 		}
 		System.out.println(this);
+		stagiaires.add(this.stagiaire);
 
 		if (this.getFilsDroit() != -1) {
 			raf.seek(this.getFilsDroit() * Stagiaire.TAILLE_OBJET_OCTET);
 			Noeud filsDroit = lectureNoeud(raf);
-			filsDroit.affichageInfixe(raf);
+			filsDroit.affichageInfixe(raf, stagiaires);
 		}
 	}
 
@@ -227,6 +228,28 @@ public class Noeud implements InterfaceTailles {
 		return stagiaires;
 
 	}
+	public Noeud supprimerNoeud(RandomAccessFile raf, Stagiaire stagiaireASupprimer) throws IOException {
+
+		if(stagiaireASupprimer == null ) {
+			return null; 
+			
+		}if (this.getStagiaire().getNom().compareTo(stagiaireASupprimer.getNom())>0) {
+			if (this.filsGauche!= -1) {
+				raf.seek(this.getFilsGauche() * Stagiaire.TAILLE_OBJET_OCTET);
+				return this.supprimerNoeud(raf, stagiaireASupprimer);
+			}else {
+				return this; 
+			}
+			
+		}else {
+			if (this.filsDroit!= -1) {
+				raf.seek(this.getFilsDroit() * Stagiaire.TAILLE_OBJET_OCTET);
+				return this.supprimerNoeud(raf, stagiaireASupprimer);
+			}else {
+			return this; 
+		}		
+
+	}
 //	public Noeud noeudSuccesseur() {
 //		if (this.filsDroit == null) {
 //			return this;
@@ -237,4 +260,5 @@ public class Noeud implements InterfaceTailles {
 //		}return noeudCourant;
 //		
 //	}
+}
 }
