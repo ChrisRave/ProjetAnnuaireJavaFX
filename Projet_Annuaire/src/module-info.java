@@ -4,5 +4,8 @@ module Projet_Annuaire {
 	requires javafx.base;
 	requires javafx.graphics;
 	
-	opens fr.isika.cda18.projet1.javaFX to javafx.graphics, javafx.fxml, javafx.base;
+	exports fr.isika.cda18.projet1.entites;
+	
+	
+	opens fr.isika.cda18.projet1.javaFX to javafx.graphics, javafx.fxml, javafx.base, javafx.controls;
 }
