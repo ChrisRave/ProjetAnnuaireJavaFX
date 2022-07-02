@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -29,7 +30,7 @@
                   </Label>
                </children>
             </HBox>
-            <TableView fx:id="tblStagiaires" prefHeight="405.0" prefWidth="996.0">
+            <TableView fx:id="tblStagiaires" prefHeight="349.0" prefWidth="1027.0">
               <columns>
                 <TableColumn fx:id="NomC" prefWidth="229.0" text="Nom" />
                 <TableColumn fx:id="prenomC" prefWidth="188.66665649414062" text="Prénom" />
@@ -44,6 +45,18 @@
                   <Insets bottom="40.0" right="40.0" top="40.0" />
                </opaqueInsets>
             </TableView>
+            <HBox prefHeight="90.0" prefWidth="1027.0">
+               <children>
+                  <Button fx:id="btnRetourInterface" mnemonicParsing="false" onAction="#btnRetourInterfaceHandler" prefHeight="25.0" prefWidth="87.0" text="retour">
+                     <HBox.margin>
+                        <Insets left="30.0" top="30.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="Microsoft JhengHei Light" size="12.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
          </children>
       </VBox>
    </children>

@@ -45,9 +45,11 @@ public class InterfaceUserController implements Initializable{
 	   @FXML
 	   private Button btnRetourAccueil; 
 	   
+	  
+	   
 	   
 	   @FXML
-	   private void btnRetourAcceuilHandler(Event e) throws IOException {
+	   private void btnRetourAccueilHandler(Event e) throws IOException {
 		
 				Stage primaryStage = (Stage) btnRetourAccueil.getScene().getWindow();
 				BorderPane layoutListe = (BorderPane)FXMLLoader.load(getClass().getResource("InterfaceAccueil.fxml"));
@@ -56,6 +58,8 @@ public class InterfaceUserController implements Initializable{
 				primaryStage.setScene(sceneList);
 				
 	   }
+	   
+	   
 	   
 	   @FXML
 	   private void btnListeHandler(Event e) throws IOException {
