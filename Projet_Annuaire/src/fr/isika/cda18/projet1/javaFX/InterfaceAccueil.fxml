@@ -33,28 +33,17 @@
       </HBox>
    </top>
    <bottom>
-      <HBox prefHeight="104.0" prefWidth="533.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
-         <children>
-            <Button fx:id="btnValider" mnemonicParsing="false" onAction="#btnValiderHandler" prefHeight="49.0" prefWidth="138.0" text="VALIDER">
-               <HBox.margin>
-                  <Insets left="425.0" top="20.0" />
-               </HBox.margin>
-               <font>
-                  <Font name="Microsoft JhengHei Light" size="12.0" />
-               </font>
-            </Button>
-         </children>
-      </HBox>
+      <HBox prefHeight="104.0" prefWidth="533.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER" />
    </bottom>
    <right>
-      <VBox prefHeight="396.0" prefWidth="653.0" BorderPane.alignment="CENTER">
+      <VBox prefHeight="396.0" prefWidth="718.0" BorderPane.alignment="CENTER">
          <children>
             <TextField fx:id="txtIdentifiant" prefHeight="50.0" prefWidth="400.0">
                <font>
                   <Font name="Arial Italic" size="14.0" />
                </font>
                <VBox.margin>
-                  <Insets right="200.0" top="90.0" />
+                  <Insets right="250.0" top="90.0" />
                </VBox.margin>
             </TextField>
             <Label fx:id="loginMessageLabel" prefHeight="18.0" prefWidth="278.0" />
@@ -63,21 +52,29 @@
                   <Font name="Arial Italic" size="14.0" />
                </font>
                <VBox.margin>
-                  <Insets right="200.0" top="25.0" />
+                  <Insets right="250.0" top="25.0" />
                </VBox.margin>
             </PasswordField>
+            <Button fx:id="btnValider" mnemonicParsing="false" onAction="#btnValiderHandler" prefHeight="49.0" prefWidth="138.0" text="VALIDER">
+               <font>
+                  <Font name="Microsoft JhengHei Light" size="12.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="150.0" top="50.0" />
+               </VBox.margin>
+            </Button>
          </children>
       </VBox>
    </right>
    <left>
-      <VBox prefHeight="396.0" prefWidth="380.0">
+      <VBox prefHeight="396.0" prefWidth="274.0">
          <children>
             <Label alignment="CENTER" prefHeight="49.0" prefWidth="177.0" text="IDENTIFIANT" textFill="#ff5f00">
                <font>
                   <Font name="Microsoft JhengHei Light" size="20.0" />
                </font>
                <VBox.margin>
-                  <Insets left="100.0" top="100.0" />
+                  <Insets left="100.0" top="90.0" />
                </VBox.margin>
             </Label>
             <Label text="MOT DE PASSE" textFill="#ff5f00">
@@ -85,7 +82,7 @@
                   <Font name="Microsoft JhengHei Light" size="20.0" />
                </font>
                <VBox.margin>
-                  <Insets left="125.0" top="50.0" />
+                  <Insets left="125.0" top="55.0" />
                </VBox.margin>
             </Label>
          </children>

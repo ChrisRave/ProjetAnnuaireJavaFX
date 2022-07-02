@@ -145,7 +145,7 @@
    <bottom>
       <HBox prefHeight="119.0" prefWidth="1000.0" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="87.0" text="retour">
+            <Button fx:id="btnRetourAccueil" mnemonicParsing="false" onAction="#btnRetourAcceuilHandler" prefHeight="25.0" prefWidth="87.0" text="retour">
                <font>
                   <Font name="Microsoft JhengHei Light" size="12.0" />
                </font>
