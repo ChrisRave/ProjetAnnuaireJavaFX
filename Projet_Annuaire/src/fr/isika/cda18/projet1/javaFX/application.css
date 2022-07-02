@@ -18,10 +18,9 @@ Button{
 }
 
 TextField {
-	-fx-background-color:    rgb(192, 192, 192)
-	
+	-fx-background-color:    rgb(214,214, 214)
 }
 
 PasswordField {
-	-fx-background-color:    rgb(192, 192, 192)
-}		
+	-fx-background-color:    rgb(214,214, 214)
+}

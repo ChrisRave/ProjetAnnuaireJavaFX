@@ -44,14 +44,14 @@ public class InterfaceAccueilController implements Initializable{
 		if (identifiant.equalsIgnoreCase("stagiaire") &&  password.equalsIgnoreCase("motdepasse")) {
 		Stage primaryStage = (Stage) btnValider.getScene().getWindow();
 		BorderPane interfaceUser = (BorderPane)FXMLLoader.load(getClass().getResource("InterfaceUser.fxml"));
-		Scene userScene = new Scene (interfaceUser,550, 400 ); 
+		Scene userScene = new Scene (interfaceUser,1000, 600 ); 
 		userScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		primaryStage.setScene(userScene);
 		
 		}else  if (identifiant.equalsIgnoreCase("admin") && password.equalsIgnoreCase("motdepasse")){
 			Stage primaryStage = (Stage) btnValider.getScene().getWindow();
 			BorderPane adminInterface = (BorderPane)FXMLLoader.load(getClass().getResource("InterfaceAdmin.fxml"));
-			Scene adminScene = new Scene (adminInterface,550, 400 ); 
+			Scene adminScene = new Scene (adminInterface,1000, 600 ); 
 			adminScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(adminScene);
 			

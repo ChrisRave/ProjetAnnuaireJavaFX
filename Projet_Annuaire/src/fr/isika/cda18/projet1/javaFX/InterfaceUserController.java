@@ -46,7 +46,7 @@ public class InterfaceUserController implements Initializable{
 		
 				Stage primaryStage = (Stage) btnListe.getScene().getWindow();
 				AnchorPane layoutListe = (AnchorPane)FXMLLoader.load(getClass().getResource("ListeStagiaires.fxml"));
-				Scene sceneList = new Scene(layoutListe,900,400);
+				Scene sceneList = new Scene(layoutListe,1000,600);
 				sceneList.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 				primaryStage.setScene(sceneList);
 	   }
