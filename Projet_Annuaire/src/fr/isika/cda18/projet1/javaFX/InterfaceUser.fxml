@@ -36,7 +36,7 @@
                   <Insets left="15.0" top="25.0" />
                </HBox.margin>
             </Button>
-            <Button layoutX="40.0" layoutY="30.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="138.0" text="enregistrer">
+            <Button fx:id="btnInscription" layoutX="40.0" layoutY="30.0" mnemonicParsing="false" onAction="#btnInscriptionHandler" prefHeight="49.0" prefWidth="138.0" text="s'inscrire">
                <font>
                   <Font name="Microsoft JhengHei Light" size="12.0" />
                </font>
@@ -99,7 +99,7 @@
    <right>
       <VBox prefHeight="379.0" prefWidth="701.0" BorderPane.alignment="CENTER">
          <children>
-            <TextField prefHeight="50.0" prefWidth="400.0">
+            <TextField fx:id="txtNom" prefHeight="50.0" prefWidth="400.0">
                <font>
                   <Font name="Microsoft JhengHei Light" size="12.0" />
                </font>
@@ -107,7 +107,7 @@
                   <Insets right="150.0" top="20.0" />
                </VBox.margin>
             </TextField>
-            <TextField layoutX="10.0" layoutY="10.0" prefHeight="50.0" prefWidth="400.0">
+            <TextField fx:id="txtPrenom" layoutX="10.0" layoutY="10.0" prefHeight="50.0" prefWidth="400.0">
                <font>
                   <Font name="Microsoft JhengHei Light" size="12.0" />
                </font>
@@ -115,7 +115,7 @@
                   <Insets right="150.0" top="35.0" />
                </VBox.margin>
             </TextField>
-            <TextField layoutX="10.0" layoutY="10.0" prefHeight="50.0" prefWidth="574.0">
+            <TextField fx:id="txtDepartement" layoutX="10.0" layoutY="10.0" prefHeight="50.0" prefWidth="574.0">
                <font>
                   <Font name="Microsoft JhengHei Light" size="12.0" />
                </font>
@@ -123,7 +123,7 @@
                   <Insets right="150.0" top="35.0" />
                </VBox.margin>
             </TextField>
-            <TextField layoutX="10.0" layoutY="35.0" prefHeight="50.0" prefWidth="400.0">
+            <TextField fx:id="txtPromotion" layoutX="10.0" layoutY="35.0" prefHeight="50.0" prefWidth="400.0">
                <font>
                   <Font name="Microsoft JhengHei Light" size="12.0" />
                </font>
@@ -131,7 +131,7 @@
                   <Insets right="150.0" top="35.0" />
                </VBox.margin>
             </TextField>
-            <TextField layoutX="10.0" layoutY="35.0" prefHeight="50.0" prefWidth="400.0">
+            <TextField fx:id="txtAnnee" layoutX="10.0" layoutY="35.0" prefHeight="50.0" prefWidth="400.0">
                <font>
                   <Font name="Microsoft JhengHei Light" size="12.0" />
                </font>

@@ -46,7 +46,7 @@ public class InterfaceUserController implements Initializable{
 		
 				Stage primaryStage = (Stage) btnListe.getScene().getWindow();
 				AnchorPane layoutListe = (AnchorPane)FXMLLoader.load(getClass().getResource("ListeStagiaires.fxml"));
-				Scene sceneList = new Scene(layoutListe,1000,600);
+				Scene sceneList = new Scene(layoutListe,1030,600);
 				sceneList.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 				primaryStage.setScene(sceneList);
 	   }
@@ -63,11 +63,11 @@ public class InterfaceUserController implements Initializable{
 				Stagiaire stagiaire = new Stagiaire(nom, prenom, departement, promotion, annee);
 	
 				Alert alert = new Alert(AlertType.INFORMATION);
-				alert.setTitle("Inscription avec succès");
+				alert.setTitle("INSCRIPTION VALIDEE");
 				alert.setHeaderText("Bienvenue à ISIKA");
-				alert.setContentText("Félicitation, la session demarre en Septembre 2022");
+				alert.setContentText("Félicitations, la session demarre en Septembre 2022");
 				alert.showAndWait();
-				System.out.println("*****Contenu de la liste*****");
+				
 	
 				reinitialisationFormulaire();
 	   }

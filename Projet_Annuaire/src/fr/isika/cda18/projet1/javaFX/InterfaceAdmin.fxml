@@ -3,26 +3,173 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.isika.cda18.projet1.javaFX.InterfaceAdminController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.isika.cda18.projet1.javaFX.InterfaceAdminController">
    <top>
-      <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <HBox prefHeight="102.0" prefWidth="1000.0" BorderPane.alignment="CENTER">
          <children>
-            <Label prefHeight="80.0" prefWidth="178.0" text="Interface Admin" textFill="#ff5f00">
+            <ImageView fitHeight="94.0" fitWidth="134.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../../../OneDrive/Documents/CDA%2018/Projet%20Annuaire/Logo-Isika-baseline.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="btnListe" mnemonicParsing="false" onAction="#btnListeHandler" prefHeight="49.0" prefWidth="138.0" text="annuaire Isika">
                <font>
-                  <Font name="Microsoft JhengHei Light" size="24.0" />
+                  <Font name="Microsoft JhengHei Light" size="12.0" />
                </font>
                <HBox.margin>
-                  <Insets left="180.0" />
+                  <Insets left="400.0" top="25.0" />
                </HBox.margin>
-            </Label>
+            </Button>
+            <Button layoutX="40.0" layoutY="30.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="138.0" text="chercher">
+               <font>
+                  <Font name="Microsoft JhengHei Light" size="12.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="15.0" top="25.0" />
+               </HBox.margin>
+            </Button>
+            <Button fx:id="btnInscription" layoutX="40.0" layoutY="30.0" mnemonicParsing="false" onAction="#btnInscriptionHandler" prefHeight="49.0" prefWidth="138.0" text="s'inscrire">
+               <font>
+                  <Font name="Microsoft JhengHei Light" size="12.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="15.0" top="25.0" />
+               </HBox.margin>
+            </Button>
          </children>
       </HBox>
    </top>
+   <left>
+      <VBox prefHeight="379.0" prefWidth="289.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label text="nom" textFill="#ff5f00">
+               <font>
+                  <Font name="Microsoft JhengHei Light" size="20.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="160.0" top="30.0" />
+               </VBox.margin>
+            </Label>
+            <Label text="prenom" textFill="#ff5f00">
+               <VBox.margin>
+                  <Insets left="160.0" top="50.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="Microsoft JhengHei Light" size="20.0" />
+               </font>
+            </Label>
+            <Label text="departement" textFill="#ff5f00">
+               <font>
+                  <Font name="Microsoft JhengHei Light" size="20.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="160.0" top="50.0" />
+               </VBox.margin>
+            </Label>
+            <Label text="promotion" textFill="#ff5f00">
+               <VBox.margin>
+                  <Insets left="160.0" top="50.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="Microsoft JhengHei Light" size="20.0" />
+               </font>
+            </Label>
+            <Label text="annee" textFill="#ff5f00">
+               <VBox.margin>
+                  <Insets left="160.0" top="50.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="Microsoft JhengHei Light" size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+   </left>
+   <center>
+      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER" />
+   </center>
+   <right>
+      <VBox prefHeight="379.0" prefWidth="701.0" BorderPane.alignment="CENTER">
+         <children>
+            <TextField fx:id="txtNom" prefHeight="50.0" prefWidth="400.0">
+               <font>
+                  <Font name="Microsoft JhengHei Light" size="12.0" />
+               </font>
+               <VBox.margin>
+                  <Insets right="150.0" top="20.0" />
+               </VBox.margin>
+            </TextField>
+            <TextField fx:id="txtPrenom" layoutX="10.0" layoutY="10.0" prefHeight="50.0" prefWidth="400.0">
+               <font>
+                  <Font name="Microsoft JhengHei Light" size="12.0" />
+               </font>
+               <VBox.margin>
+                  <Insets right="150.0" top="35.0" />
+               </VBox.margin>
+            </TextField>
+            <TextField fx:id="txtDepartement" layoutX="10.0" layoutY="10.0" prefHeight="50.0" prefWidth="574.0">
+               <font>
+                  <Font name="Microsoft JhengHei Light" size="12.0" />
+               </font>
+               <VBox.margin>
+                  <Insets right="150.0" top="35.0" />
+               </VBox.margin>
+            </TextField>
+            <TextField fx:id="txtPromotion" layoutX="10.0" layoutY="35.0" prefHeight="50.0" prefWidth="400.0">
+               <font>
+                  <Font name="Microsoft JhengHei Light" size="12.0" />
+               </font>
+               <VBox.margin>
+                  <Insets right="150.0" top="35.0" />
+               </VBox.margin>
+            </TextField>
+            <TextField fx:id="txtAnnee" layoutX="10.0" layoutY="35.0" prefHeight="50.0" prefWidth="400.0">
+               <font>
+                  <Font name="Microsoft JhengHei Light" size="12.0" />
+               </font>
+               <VBox.margin>
+                  <Insets right="150.0" top="35.0" />
+               </VBox.margin>
+            </TextField>
+         </children>
+      </VBox>
+   </right>
    <bottom>
-      <Button fx:id="btnListe" mnemonicParsing="false" onAction="#btnListeHandler" text="Liste Stagiaires" BorderPane.alignment="CENTER" />
+      <HBox prefHeight="119.0" prefWidth="1000.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="87.0" text="retour">
+               <font>
+                  <Font name="Microsoft JhengHei Light" size="12.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="30.0" top="45.0" />
+               </HBox.margin>
+            </Button>
+            <Button mnemonicParsing="false" prefHeight="49.0" prefWidth="138.0" text="ajouter">
+               <font>
+                  <Font name="Microsoft JhengHei Light" size="12.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="425.0" top="35.0" />
+               </HBox.margin>
+            </Button>
+            <Button mnemonicParsing="false" prefHeight="49.0" prefWidth="138.0" text="supprimer">
+               <font>
+                  <Font name="Microsoft JhengHei Light" size="12.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="15.0" top="35.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+      </HBox>
    </bottom>
 </BorderPane>
