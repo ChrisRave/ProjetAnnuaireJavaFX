@@ -1,27 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.effect.Reflection?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
 <BorderPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.isika.cda18.projet1.javaFX.InterfaceAccueilController">
    <top>
-      <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: white" BorderPane.alignment="CENTER">
+      <HBox prefHeight="89.0" prefWidth="1000.0" style="-fx-background-color: grey;" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fitHeight="94.0" fitWidth="134.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="108.0" fitWidth="133.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../../../../../../OneDrive/Documents/CDA%2018/Projet%20Annuaire/Logo-Isika-baseline.png" />
                </image>
+               <effect>
+                  <InnerShadow>
+                     <color>
+                        <Color red="1.0" green="0.37254902720451355" />
+                     </color>
+                  </InnerShadow>
+               </effect>
             </ImageView>
-            <Label alignment="CENTER" prefHeight="60.0" prefWidth="328.0" text="BIENVENUE SUR L'ANNUAIRE DE ISIKA" textFill="#ff5f00">
+            <Label alignment="CENTER" prefHeight="60.0" prefWidth="328.0" text="BIENVENUE SUR L'ANNUAIRE DE ISIKA" textFill="WHITE">
                <HBox.margin>
                   <Insets top="20.0" />
                </HBox.margin>
@@ -30,62 +42,137 @@
                </font>
             </Label>
          </children>
+         <effect>
+            <InnerShadow />
+         </effect>
       </HBox>
    </top>
-   <bottom>
-      <HBox prefHeight="104.0" prefWidth="533.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER" />
-   </bottom>
    <right>
-      <VBox prefHeight="396.0" prefWidth="718.0" BorderPane.alignment="CENTER">
+      <VBox prefHeight="407.0" prefWidth="718.0" BorderPane.alignment="CENTER">
          <children>
+            <Label alignment="CENTER" text="identifiant" textFill="#ff5f00">
+               <font>
+                  <Font name="Century Gothic Bold" size="22.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="90.0" />
+               </VBox.margin>
+            </Label>
             <TextField fx:id="txtIdentifiant" prefHeight="50.0" prefWidth="400.0">
                <font>
                   <Font name="Arial Italic" size="14.0" />
                </font>
                <VBox.margin>
-                  <Insets right="250.0" top="90.0" />
+                  <Insets right="250.0" top="10.0" />
                </VBox.margin>
+               <effect>
+                  <DropShadow>
+                     <color>
+                        <Color red="1.0" green="0.37254902720451355" />
+                     </color>
+                  </DropShadow>
+               </effect>
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
             </TextField>
-            <Label fx:id="loginMessageLabel" prefHeight="18.0" prefWidth="278.0" />
+            <Label text="mot de passe" textFill="#ff5f00">
+               <font>
+                  <Font name="Century Gothic Bold" size="22.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="55.0" />
+               </VBox.margin>
+            </Label>
             <PasswordField fx:id="txtPassword" prefHeight="50.0" prefWidth="400.0">
                <font>
                   <Font name="Arial Italic" size="14.0" />
                </font>
                <VBox.margin>
-                  <Insets right="250.0" top="25.0" />
+                  <Insets right="250.0" top="10.0" />
                </VBox.margin>
+               <effect>
+                  <DropShadow>
+                     <color>
+                        <Color red="1.0" green="0.37254902720451355" />
+                     </color>
+                  </DropShadow>
+               </effect>
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
             </PasswordField>
             <Button fx:id="btnValider" mnemonicParsing="false" onAction="#btnValiderHandler" prefHeight="49.0" prefWidth="138.0" text="VALIDER">
                <font>
-                  <Font name="Microsoft JhengHei Light" size="12.0" />
+                  <Font name="Century Gothic" size="12.0" />
                </font>
                <VBox.margin>
                   <Insets left="150.0" top="50.0" />
                </VBox.margin>
+               <effect>
+                  <Reflection bottomOpacity="0.01" fraction="0.43" topOpacity="0.21" />
+               </effect>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </Button>
+            <Label fx:id="loginMessageLabel" prefHeight="18.0" prefWidth="278.0" textFill="#f33905">
+               <VBox.margin>
+                  <Insets left="80.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Label>
          </children>
       </VBox>
    </right>
-   <left>
-      <VBox prefHeight="396.0" prefWidth="274.0">
+   <bottom>
+      <HBox prefHeight="80.0" prefWidth="1000.0" BorderPane.alignment="CENTER">
          <children>
-            <Label alignment="CENTER" prefHeight="49.0" prefWidth="177.0" text="IDENTIFIANT" textFill="#ff5f00">
-               <font>
-                  <Font name="Microsoft JhengHei Light" size="20.0" />
-               </font>
-               <VBox.margin>
-                  <Insets left="100.0" top="90.0" />
-               </VBox.margin>
-            </Label>
-            <Label text="MOT DE PASSE" textFill="#ff5f00">
-               <font>
-                  <Font name="Microsoft JhengHei Light" size="20.0" />
-               </font>
-               <VBox.margin>
-                  <Insets left="125.0" top="55.0" />
-               </VBox.margin>
-            </Label>
+            <VBox prefHeight="100.0" prefWidth="39.0">
+               <children>
+                  <ImageView fitHeight="25.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../../../../OneDrive/Documents/CDA%2018/Projet%20Annuaire/Projet_Annuaire/src/mesFichiers/phone.png" />
+                     </image>
+                     <VBox.margin>
+                        <Insets left="10.0" top="20.0" />
+                     </VBox.margin>
+                  </ImageView>
+                  <ImageView fitHeight="15.0" fitWidth="15.0">
+                     <image>
+                        <Image url="@../../../../../../../../OneDrive/Documents/CDA%2018/Projet%20Annuaire/Projet_Annuaire/src/mesFichiers/world.png" />
+                     </image>
+                     <VBox.margin>
+                        <Insets left="10.0" top="20.0" />
+                     </VBox.margin>
+                  </ImageView>
+               </children>
+            </VBox>
+            <VBox prefHeight="100.0" prefWidth="180.0">
+               <children>
+                  <Label text="01 48 25 26 24">
+                     <font>
+                        <Font name="Microsoft JhengHei Light" size="12.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label text="www.projet-isika.com">
+                     <font>
+                        <Font name="Microsoft JhengHei Light" size="12.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="15.0" />
+                     </VBox.margin>
+                  </Label>
+               </children>
+            </VBox>
          </children>
-      </VBox>
-   </left>
+      </HBox>
+   </bottom>
+   <effect>
+      <InnerShadow />
+   </effect>
 </BorderPane>

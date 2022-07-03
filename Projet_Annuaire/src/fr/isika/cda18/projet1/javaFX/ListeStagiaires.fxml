@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -16,19 +17,25 @@
    <children>
       <VBox prefHeight="529.0" prefWidth="1027.0">
          <children>
-            <HBox prefHeight="94.0" prefWidth="1027.0">
+            <HBox prefHeight="85.0" prefWidth="1027.0">
                <children>
                   <ImageView fitHeight="94.0" fitWidth="134.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../../../../../../OneDrive/Documents/CDA%2018/Projet%20Annuaire/Logo-Isika-baseline.png" />
                      </image>
                   </ImageView>
-                  <Label alignment="CENTER" prefHeight="91.0" prefWidth="785.0" text="LISTE DES STAGIAIRES" textFill="#ff5f00">
+                  <Label alignment="CENTER" prefHeight="102.0" prefWidth="892.0" style="-fx-background-color: grey;" text="LISTE DES STAGIAIRES" textFill="#ff5f00">
                      <font>
-                        <Font name="Microsoft JhengHei Light" size="20.0" />
+                        <Font name="Century Gothic Bold" size="20.0" />
                      </font>
+                     <effect>
+                        <InnerShadow />
+                     </effect>
                   </Label>
                </children>
+               <effect>
+                  <InnerShadow />
+               </effect>
             </HBox>
             <TableView fx:id="tblStagiaires" prefHeight="349.0" prefWidth="1027.0">
               <columns>
@@ -49,7 +56,7 @@
                <children>
                   <Button fx:id="btnRetourInterface" mnemonicParsing="false" onAction="#btnRetourInterfaceUser" prefHeight="25.0" prefWidth="87.0" text="retour">
                      <HBox.margin>
-                        <Insets left="30.0" top="30.0" />
+                        <Insets left="25.0" top="50.0" />
                      </HBox.margin>
                      <font>
                         <Font name="Microsoft JhengHei Light" size="12.0" />
@@ -60,4 +67,7 @@
          </children>
       </VBox>
    </children>
+   <effect>
+      <InnerShadow />
+   </effect>
 </AnchorPane>

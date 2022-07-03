@@ -59,7 +59,7 @@ public class InterfaceAccueilController implements Initializable{
 		
 		else {
 			
-			loginMessageLabel.setText("Erreur de saisie");
+			loginMessageLabel.setText("données incorrectes, veuillez recommencer! ");
 
 		}
 		resetForm();
