@@ -21,6 +21,7 @@ public class Main extends Application {
 
 	public static ArbreBinaire arbre;
 	public static RandomAccessFile raf ;
+	
 	static {
 	arbre = new ArbreBinaire();
 	try {

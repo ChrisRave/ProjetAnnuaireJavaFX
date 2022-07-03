@@ -7,9 +7,12 @@ import java.io.RandomAccessFile;
 import java.util.ArrayList;
 import java.util.List;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 public class ArbreBinaire {
 
-	public static List<Stagiaire> stagiaires = new ArrayList<>();
+	public static ObservableList<Stagiaire> stagiaires =FXCollections.observableArrayList();
 
 	public void importFichier() {
 		try {
