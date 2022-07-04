@@ -1,8 +1,10 @@
 package fr.isika.cda18.projet1.javaFX;
 
 import java.io.IOException;
+import java.io.RandomAccessFile;
 
 import fr.isika.cda18.projet1.entites.ArbreBinaire;
+import fr.isika.cda18.projet1.entites.Noeud;
 import fr.isika.cda18.projet1.entites.Stagiaire;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -57,15 +59,19 @@ public class InterfaceAdminController {
 	private void btnListeHandler(Event e) throws IOException {
 
 		Stage primaryStage = (Stage) btnListe.getScene().getWindow();
-		AnchorPane interfaceAdmin = (AnchorPane) FXMLLoader.load(getClass().getResource("ListeStagiaires.fxml"));
-		Scene adminScene = new Scene(interfaceAdmin, 1030, 600);
-		adminScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-		primaryStage.setScene(adminScene);
+		AnchorPane userInterface = (AnchorPane) FXMLLoader.load(getClass().getResource("ListeStagiaires.fxml"));
+		Scene userScene = new Scene(((AnchorPane) userInterface), 1030, 600);
+		userScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+		primaryStage.setScene(userScene);
+
 	}
 
 	@FXML
 	private void btnInscriptionHandler(Event e) throws IOException {
-
+		
+		
+		RandomAccessFile raf = new RandomAccessFile("src/mesFichiers/listeStagiaires.bin", "rw");
+		ArbreBinaire arbre = new ArbreBinaire();
 		String nom = txtNom.getText();
 		String prenom = txtPrenom.getText();
 		String departement = txtDepartement.getText();
@@ -73,18 +79,19 @@ public class InterfaceAdminController {
 		String annee = txtAnnee.getText();
 
 		Stagiaire stagiaire = new Stagiaire(nom, prenom, departement, promotion, annee);
-		ArbreBinaire.stagiaires.add(stagiaire);
-		System.out.println(ArbreBinaire.stagiaires);
+		arbre.ajouterRacine(new Noeud(stagiaire, -1, -1));
+		raf.seek(0); 
+		btnListeHandler(e);
 		
-		
+
 		Alert alert = new Alert(AlertType.INFORMATION);
 		alert.setTitle("INSCRIPTION VALIDEE");
-		alert.setHeaderText("Bienvenue à ISIKA");
-		alert.setContentText("Félicitations, la session demarre en Septembre 2022");
+		alert.setHeaderText("Stagiaire ajouté");
 		alert.showAndWait();
+		
 
 		reinitialisationFormulaire();
-		
+
 	}
 
 	public void reinitialisationFormulaire() {
