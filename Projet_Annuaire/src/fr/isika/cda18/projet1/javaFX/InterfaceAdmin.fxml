@@ -30,7 +30,7 @@
                   </InnerShadow>
                </effect>
             </ImageView>
-            <Button fx:id="btnListe" mnemonicParsing="false" onAction="#btnListeHandler" prefHeight="49.0" prefWidth="138.0" text="annuaire Isika">
+            <Button fx:id="btnListe" mnemonicParsing="false" onAction="#btnListeHandler" prefHeight="49.0" prefWidth="138.0" text="Annuaire Isika">
                <font>
                   <Font name="Microsoft JhengHei Light" size="12.0" />
                </font>
@@ -44,7 +44,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button fx:id="btnChercherStagiaire" layoutX="40.0" layoutY="30.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="138.0" text="chercher">
+            <Button fx:id="btnChercherStagiaire" layoutX="40.0" layoutY="30.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="138.0" text="Chercher">
                <font>
                   <Font name="Microsoft JhengHei Light" size="12.0" />
                </font>
@@ -58,7 +58,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button fx:id="btnInscription" layoutX="40.0" layoutY="30.0" mnemonicParsing="false" onAction="#btnInscriptionHandler" prefHeight="49.0" prefWidth="138.0" text="s'inscrire">
+            <Button fx:id="btnInscription" layoutX="40.0" layoutY="30.0" mnemonicParsing="false" onAction="#btnInscriptionHandler" prefHeight="49.0" prefWidth="138.0" text="S'inscrire">
                <font>
                   <Font name="Microsoft JhengHei Light" size="12.0" />
                </font>
@@ -72,7 +72,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="49.0" prefWidth="138.0" text="supprimer">
+            <Button mnemonicParsing="false" prefHeight="49.0" prefWidth="138.0" text="Supprimer">
                <HBox.margin>
                   <Insets left="15.0" top="25.0" />
                </HBox.margin>
@@ -86,7 +86,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button layoutX="886.0" layoutY="35.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="138.0" text="modifier">
+            <Button layoutX="886.0" layoutY="35.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="138.0" text="Modifier">
                <font>
                   <Font name="Microsoft JhengHei Light" size="12.0" />
                </font>
@@ -109,7 +109,7 @@
    <left>
       <VBox prefHeight="379.0" prefWidth="289.0" BorderPane.alignment="CENTER">
          <children>
-            <Label text="nom" textFill="#ff5f00">
+            <Label text="Nom" textFill="#ff5f00">
                <font>
                   <Font name="Century Gothic Bold" size="20.0" />
                </font>
@@ -117,7 +117,7 @@
                   <Insets left="160.0" top="40.0" />
                </VBox.margin>
             </Label>
-            <Label text="prenom" textFill="#ff5f00">
+            <Label text="Prénom" textFill="#ff5f00">
                <VBox.margin>
                   <Insets left="160.0" top="50.0" />
                </VBox.margin>
@@ -125,7 +125,7 @@
                   <Font name="Century Gothic Bold" size="20.0" />
                </font>
             </Label>
-            <Label text="departement" textFill="#ff5f00">
+            <Label text="Département" textFill="#ff5f00">
                <font>
                   <Font name="Century Gothic Bold" size="20.0" />
                </font>
@@ -133,7 +133,7 @@
                   <Insets left="160.0" top="60.0" />
                </VBox.margin>
             </Label>
-            <Label text="promotion" textFill="#ff5f00">
+            <Label text="Promotion" textFill="#ff5f00">
                <VBox.margin>
                   <Insets left="160.0" top="50.0" />
                </VBox.margin>
@@ -141,7 +141,7 @@
                   <Font name="Century Gothic Bold" size="20.0" />
                </font>
             </Label>
-            <Label text="annee" textFill="#ff5f00">
+            <Label text="Année" textFill="#ff5f00">
                <VBox.margin>
                   <Insets left="160.0" top="50.0" />
                </VBox.margin>

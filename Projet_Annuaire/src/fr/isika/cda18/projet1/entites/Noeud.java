@@ -3,7 +3,6 @@ package fr.isika.cda18.projet1.entites;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.RandomAccessFile;
-import java.util.ArrayList;
 import java.util.List;
 
 public class Noeud implements InterfaceTailles {
@@ -48,7 +47,7 @@ public class Noeud implements InterfaceTailles {
 		try {
 			raf.writeChars(noeud.getStagiaire().agrandirNom());
 			raf.writeChars(noeud.getStagiaire().agrandirPrenom());
-			raf.writeChars(noeud.getStagiaire().getDepartement());
+			raf.writeChars(noeud.getStagiaire().agrandirDepartement());
 			raf.writeChars(noeud.getStagiaire().agrandirPromo());
 			raf.writeChars(noeud.getStagiaire().getAnnee());
 			raf.writeInt(noeud.getFilsGauche());
@@ -61,7 +60,7 @@ public class Noeud implements InterfaceTailles {
 		try {
 			raf.writeChars(stagiaire.agrandirNom());
 			raf.writeChars(stagiaire.agrandirPrenom());
-			raf.writeChars(stagiaire.getDepartement());
+			raf.writeChars(stagiaire.agrandirDepartement());
 			raf.writeChars(stagiaire.agrandirPromo());
 			raf.writeChars(stagiaire.getAnnee());
 		

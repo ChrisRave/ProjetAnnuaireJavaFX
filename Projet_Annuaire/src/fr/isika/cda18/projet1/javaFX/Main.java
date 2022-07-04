@@ -51,6 +51,7 @@ public class Main extends Application {
 	public static void main(String[] args) throws IOException {
 		
 		arbre.importFichier();
+		System.out.println("nb de stagiaires à ajouter : " + ArbreBinaire.stagiaires.size());
 		for (int i = 0; i < ArbreBinaire.stagiaires.size(); i++) {
 			arbre.ajouterRacine(new Noeud(ArbreBinaire.stagiaires.get(i), -1, -1));
 		

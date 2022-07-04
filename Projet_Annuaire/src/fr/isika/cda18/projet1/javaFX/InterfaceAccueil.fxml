@@ -50,7 +50,7 @@
    <right>
       <VBox prefHeight="407.0" prefWidth="718.0" BorderPane.alignment="CENTER">
          <children>
-            <Label alignment="CENTER" text="identifiant" textFill="#ff5f00">
+            <Label alignment="CENTER" text="Identifiant" textFill="#ff5f00">
                <font>
                   <Font name="Century Gothic Bold" size="22.0" />
                </font>
@@ -76,7 +76,7 @@
                   <Cursor fx:constant="TEXT" />
                </cursor>
             </TextField>
-            <Label text="mot de passe" textFill="#ff5f00">
+            <Label text="Mot de passe" textFill="#ff5f00">
                <font>
                   <Font name="Century Gothic Bold" size="22.0" />
                </font>

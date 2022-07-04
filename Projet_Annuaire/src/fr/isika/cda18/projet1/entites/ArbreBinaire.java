@@ -16,7 +16,7 @@ public class ArbreBinaire {
 
 	public void importFichier() {
 		try {
-			FileReader fr = new FileReader("src/mesFichiers/STAGIAIRES_V2.DON");
+			FileReader fr = new FileReader("src/mesFichiers/STAGIAIRES.DON");
 			BufferedReader br = new BufferedReader(fr);
 			while (br.ready()) {
 				Stagiaire stagiaire = new Stagiaire(null, null, null, null, null);
@@ -47,7 +47,9 @@ public class ArbreBinaire {
 
 	}
 
-	public List<Stagiaire> affichageInfixe(RandomAccessFile raf) throws IOException {
+	public List<Stagiaire> affichageInfixe() throws IOException {
+		
+		RandomAccessFile raf = new RandomAccessFile("src/mesFichiers/listeStagiaires.bin", "rw");
 		List<Stagiaire> stagiaires = new ArrayList<>();
 		if (raf.length() != 0) {
 			raf.seek(0);
@@ -59,6 +61,7 @@ public class ArbreBinaire {
 	public void ajouterRacine(Noeud noeud) throws IOException {
 
 		RandomAccessFile raf = new RandomAccessFile("src/mesFichiers/listeStagiaires.bin", "rw");
+		System.out.println("ajouter " + noeud.getStagiaire().nom);
 		if (raf.length() == 0) {
 			raf.seek(0);
 			Noeud.ecritureBinaire(raf, noeud);

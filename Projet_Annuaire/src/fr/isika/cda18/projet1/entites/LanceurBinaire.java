@@ -20,10 +20,10 @@ public class LanceurBinaire {
 			}
 			// arbre.ajouterStagiaire(raf, new Noeud(s1, -1, -1));
 
-			arbre.affichageInfixe(raf);
+			arbre.affichageInfixe();
 			raf.seek(0); 
 			
-			arbre.affichageInfixe(raf);
+			arbre.affichageInfixe();
 			raf.close();
 		} catch (IOException e) {
 			e.printStackTrace();

@@ -40,7 +40,7 @@ public class ListeDesStagiairesController implements Initializable {
 	private TableColumn<Stagiaire, String> anneeC;
 
 	@FXML
-	private TableView<Stagiaire> tblStagiaires;
+	public TableView<Stagiaire> tblStagiaires;
 
 	@FXML
 	private Button btnRetourInterface;
@@ -74,13 +74,19 @@ public class ListeDesStagiairesController implements Initializable {
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-
-		NomC.setCellValueFactory(new PropertyValueFactory<Stagiaire, String>("Nom"));
-		prenomC.setCellValueFactory(new PropertyValueFactory<Stagiaire, String>("prenom"));
-		departementC.setCellValueFactory(new PropertyValueFactory<Stagiaire, String>("departement"));
-		promotionC.setCellValueFactory(new PropertyValueFactory<Stagiaire, String>("promotion"));
-		anneeC.setCellValueFactory(new PropertyValueFactory<Stagiaire, String>("annee"));
-		tblStagiaires.setItems(ArbreBinaire.stagiaires);
-
+		try {
+			ArbreBinaire arbre = new ArbreBinaire();
+			List<Stagiaire> stagiaires = new ArrayList<>();
+			stagiaires = arbre.affichageInfixe();
+			NomC.setCellValueFactory(new PropertyValueFactory<Stagiaire, String>("Nom"));
+			prenomC.setCellValueFactory(new PropertyValueFactory<Stagiaire, String>("prenom"));
+			departementC.setCellValueFactory(new PropertyValueFactory<Stagiaire, String>("departement"));
+			promotionC.setCellValueFactory(new PropertyValueFactory<Stagiaire, String>("promotion"));
+			anneeC.setCellValueFactory(new PropertyValueFactory<Stagiaire, String>("annee"));
+			tblStagiaires.setItems(FXCollections.observableArrayList(stagiaires));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }
