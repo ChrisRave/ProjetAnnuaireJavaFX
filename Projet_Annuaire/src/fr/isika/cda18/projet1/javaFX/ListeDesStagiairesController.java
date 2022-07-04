@@ -94,7 +94,7 @@ public class ListeDesStagiairesController implements Initializable {
 	}
 	
 	public void afficherRecherche(ObservableList<Stagiaire > resultat) throws IOException {
-		System.out.println("afficher recherche");
+		//System.out.println("afficher recherche");
 		//this.initialize(null, null);
 		tblStagiaires = new TableView<>(resultat);
 		NomC = new TableColumn<>();

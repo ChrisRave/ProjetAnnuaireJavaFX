@@ -18,12 +18,12 @@ public class LanceurBinaire {
 			for (int i = 0; i < ArbreBinaire.stagiaires.size(); i++) {
 				arbre.ajouterRacine(new Noeud(ArbreBinaire.stagiaires.get(i), -1, -1));
 			}
-			// arbre.ajouterStagiaire(raf, new Noeud(s1, -1, -1));
+			
 
 			arbre.affichageInfixe();
 			raf.seek(0); 
 			
-			//arbre.affichageInfixe();
+		
 			raf.close();
 		} catch (IOException e) {
 			e.printStackTrace();

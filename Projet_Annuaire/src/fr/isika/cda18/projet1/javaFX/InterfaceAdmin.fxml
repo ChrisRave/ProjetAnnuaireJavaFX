@@ -30,26 +30,12 @@
                   </InnerShadow>
                </effect>
             </ImageView>
-            <Button fx:id="btnListe" mnemonicParsing="false" onAction="#btnListeHandler" prefHeight="49.0" prefWidth="138.0" text="Annuaire Isika">
+            <Button fx:id="btnChercherStagiaire" layoutX="40.0" layoutY="30.0" mnemonicParsing="false" onAction="#btnChercherStagiaireHandler" prefHeight="49.0" prefWidth="138.0" text="Chercher">
                <font>
                   <Font name="Microsoft JhengHei Light" size="12.0" />
                </font>
                <HBox.margin>
-                  <Insets left="300.0" top="25.0" />
-               </HBox.margin>
-               <effect>
-                  <InnerShadow />
-               </effect>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Button>
-            <Button fx:id="btnChercherStagiaire" layoutX="40.0" layoutY="30.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="138.0" text="Chercher">
-               <font>
-                  <Font name="Microsoft JhengHei Light" size="12.0" />
-               </font>
-               <HBox.margin>
-                  <Insets left="15.0" top="25.0" />
+                  <Insets left="375.0" top="25.0" />
                </HBox.margin>
                <effect>
                   <InnerShadow />

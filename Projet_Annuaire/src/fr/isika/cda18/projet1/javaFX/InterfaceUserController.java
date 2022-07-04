@@ -56,7 +56,7 @@ public class InterfaceUserController implements Initializable {
 	@FXML
 	private Button btnChercherStagiaire;
 	
-	//à remettre dans inscription handler si besoin
+	
 	ArbreBinaire arbre = new ArbreBinaire();
 
 	@FXML
@@ -73,7 +73,7 @@ public class InterfaceUserController implements Initializable {
 	@FXML
 	private void btnListeHandler(Event e) throws IOException {
 
-		Stage primaryStage = (Stage) btnListe.getScene().getWindow();
+		Stage primaryStage = (Stage) btnInscription.getScene().getWindow();
 		AnchorPane userInterface = (AnchorPane) FXMLLoader.load(getClass().getResource("ListeStagiaires.fxml"));
 		Scene userScene = new Scene(((AnchorPane) userInterface), 1030, 600);
 		userScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
@@ -96,7 +96,7 @@ public class InterfaceUserController implements Initializable {
 		Stagiaire stagiaire = new Stagiaire(nom, prenom, departement, promotion, annee);
 		arbre.ajouterRacine(new Noeud(stagiaire, -1, -1));
 		raf.seek(0); 
-		btnListeHandler(e);
+		
 		
 
 		Alert alert = new Alert(AlertType.INFORMATION);
@@ -109,7 +109,7 @@ public class InterfaceUserController implements Initializable {
 		reinitialisationFormulaire();
 
 	}
-	//à supprimer si besoin
+
 	@FXML
 	private void btnChercherStagiaireHandler(Event e) throws IOException {
 		
@@ -135,9 +135,6 @@ public class InterfaceUserController implements Initializable {
 		TableView<Stagiaire> tableau =(TableView<Stagiaire>) ((VBox) interfaceListe.getChildren().get(0)).getChildren().get(1);
 		tableau.setItems(resultat);
 
-		//		ListeDesStagiairesController controller = new ListeDesStagiairesController();
-//		controller.afficherRecherche(resultat);
-//		System.out.println(resultat.size());
 		
 		reinitialisationFormulaire();
 		
