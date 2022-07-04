@@ -94,9 +94,9 @@ public class Noeud implements InterfaceTailles {
 				}
 				int filsGauche = raf.readInt();
 				int filsDroit = raf.readInt();
-				System.out
-						.println("Nom :" + nom.trim() + "\t Prenom :" + prenom.trim() + "\t Departement :" + departement
-								+ "\t Promotion :" + promo.trim() + "\t Annee : " + annee + filsDroit + filsGauche);
+//				System.out
+//						.println("Nom :" + nom.trim() + "\t Prenom :" + prenom.trim() + "\t Departement :" + departement
+//								+ "\t Promotion :" + promo.trim() + "\t Annee : " + annee + filsDroit + filsGauche);
 			}
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();

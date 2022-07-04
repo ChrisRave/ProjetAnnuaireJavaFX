@@ -75,7 +75,7 @@ public class InterfaceAdminController {
 		Stagiaire stagiaire = new Stagiaire(nom, prenom, departement, promotion, annee);
 		ArbreBinaire.stagiaires.add(stagiaire);
 		System.out.println(ArbreBinaire.stagiaires);
-		btnListeHandler(e);
+		
 		
 		Alert alert = new Alert(AlertType.INFORMATION);
 		alert.setTitle("INSCRIPTION VALIDEE");

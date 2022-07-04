@@ -23,7 +23,7 @@ public class LanceurBinaire {
 			arbre.affichageInfixe();
 			raf.seek(0); 
 			
-			arbre.affichageInfixe();
+			//arbre.affichageInfixe();
 			raf.close();
 		} catch (IOException e) {
 			e.printStackTrace();

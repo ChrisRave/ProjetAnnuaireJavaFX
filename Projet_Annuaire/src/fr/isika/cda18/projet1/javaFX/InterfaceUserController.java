@@ -1,6 +1,7 @@
 package fr.isika.cda18.projet1.javaFX;
 
 import java.io.IOException;
+import java.io.RandomAccessFile;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -47,8 +48,7 @@ public class InterfaceUserController implements Initializable {
 
 	@FXML
 	private Button btnRetourAccueil;
-	
-	
+
 	@FXML
 	private Button btnChercherStagiaire;
 
@@ -66,22 +66,20 @@ public class InterfaceUserController implements Initializable {
 	@FXML
 	private void btnListeHandler(Event e) throws IOException {
 
-		
-		//List<Stagiaire> stagiaires = new ArrayList<>(); 
-		//stagiaires = arbre.affichageInfixe(); 
 		Stage primaryStage = (Stage) btnListe.getScene().getWindow();
 		AnchorPane userInterface = (AnchorPane) FXMLLoader.load(getClass().getResource("ListeStagiaires.fxml"));
 		Scene userScene = new Scene(((AnchorPane) userInterface), 1030, 600);
 		userScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-		//userInterface.tblStagiaires
 		primaryStage.setScene(userScene);
-		
+
 	}
 
 	@FXML
 	private void btnInscriptionHandler(Event e) throws IOException {
-
-		ArbreBinaire arbre = new ArbreBinaire(); 
+		
+		
+		RandomAccessFile raf = new RandomAccessFile("src/mesFichiers/listeStagiaires.bin", "rw");
+		ArbreBinaire arbre = new ArbreBinaire();
 		String nom = txtNom.getText();
 		String prenom = txtPrenom.getText();
 		String departement = txtDepartement.getText();
@@ -90,17 +88,19 @@ public class InterfaceUserController implements Initializable {
 
 		Stagiaire stagiaire = new Stagiaire(nom, prenom, departement, promotion, annee);
 		arbre.ajouterRacine(new Noeud(stagiaire, -1, -1));
-		System.out.println(ArbreBinaire.stagiaires);
+		raf.seek(0); 
 		btnListeHandler(e);
 		
+
 		Alert alert = new Alert(AlertType.INFORMATION);
 		alert.setTitle("INSCRIPTION VALIDEE");
 		alert.setHeaderText("Bienvenue à ISIKA");
 		alert.setContentText("Félicitations, la session demarre en Septembre 2022");
 		alert.showAndWait();
+		
 
 		reinitialisationFormulaire();
-		
+
 	}
 
 	public void reinitialisationFormulaire() {

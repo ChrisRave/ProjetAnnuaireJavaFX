@@ -28,7 +28,7 @@ public class ArbreBinaire {
 				br.readLine();
 				stagiaires.add(stagiaire);
 			}
-			System.out.println("*****Liste stagiaires*****\n" + stagiaires);
+			//System.out.println("*****Liste stagiaires*****\n" + stagiaires);
 			br.close();
 			fr.close();
 		} catch (IOException ex) {
@@ -61,7 +61,7 @@ public class ArbreBinaire {
 	public void ajouterRacine(Noeud noeud) throws IOException {
 
 		RandomAccessFile raf = new RandomAccessFile("src/mesFichiers/listeStagiaires.bin", "rw");
-		System.out.println("ajouter " + noeud.getStagiaire().nom);
+		//System.out.println("ajouter " + noeud.getStagiaire().nom);
 		if (raf.length() == 0) {
 			raf.seek(0);
 			Noeud.ecritureBinaire(raf, noeud);
