@@ -19,6 +19,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
@@ -40,7 +41,7 @@ public class ListeDesStagiairesController implements Initializable {
 	private TableColumn<Stagiaire, String> anneeC;
 
 	@FXML
-	public TableView<Stagiaire> tblStagiaires;
+	public static TableView<Stagiaire> tblStagiaires = new TableView<Stagiaire>();
 
 	@FXML
 	private Button btnRetourInterface;
@@ -76,17 +77,46 @@ public class ListeDesStagiairesController implements Initializable {
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		try {
 			ArbreBinaire arbre = new ArbreBinaire();
-			List<Stagiaire> stagiaires = new ArrayList<>();
-			stagiaires = arbre.affichageInfixe();
+			
 			NomC.setCellValueFactory(new PropertyValueFactory<Stagiaire, String>("Nom"));
 			prenomC.setCellValueFactory(new PropertyValueFactory<Stagiaire, String>("prenom"));
 			departementC.setCellValueFactory(new PropertyValueFactory<Stagiaire, String>("departement"));
 			promotionC.setCellValueFactory(new PropertyValueFactory<Stagiaire, String>("promotion"));
 			anneeC.setCellValueFactory(new PropertyValueFactory<Stagiaire, String>("annee"));
-			tblStagiaires.setItems(FXCollections.observableArrayList(stagiaires));
+			if (tblStagiaires.getItems() == null) {
+				List<Stagiaire> stagiaires = new ArrayList<>();
+				stagiaires = arbre.affichageInfixe();
+				tblStagiaires.setItems(FXCollections.observableArrayList(stagiaires));
+			}
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	public void afficherRecherche(ObservableList<Stagiaire > resultat) throws IOException {
+		System.out.println("afficher recherche");
+		//this.initialize(null, null);
+		tblStagiaires = new TableView<>(resultat);
+		NomC = new TableColumn<>();
+		prenomC = new TableColumn<>();
+		departementC = new TableColumn<>();
+		promotionC = new TableColumn<>();
+		anneeC = new TableColumn<>();
+		NomC.setCellValueFactory(new PropertyValueFactory<Stagiaire, String>("Nom"));
+		prenomC.setCellValueFactory(new PropertyValueFactory<Stagiaire, String>("prenom"));
+		departementC.setCellValueFactory(new PropertyValueFactory<Stagiaire, String>("departement"));
+		promotionC.setCellValueFactory(new PropertyValueFactory<Stagiaire, String>("promotion"));
+		anneeC.setCellValueFactory(new PropertyValueFactory<Stagiaire, String>("annee"));
+//		Stage primaryStage = (Stage) btnRetourInterface.getScene().getWindow();
+//		//Stage primaryStage = (Stage) tblStagiaires.getScene().getWindow();
+//		AnchorPane interfaceListe = (AnchorPane) FXMLLoader.load(getClass().getResource("ListeStagiaires.fxml"));
+//		Scene sceneList = new Scene(interfaceListe, 1030, 600);
+//		sceneList.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+//		
+//			
+//		primaryStage.setScene(sceneList);
+		tblStagiaires.setItems(resultat);
+		//tblStagiaires.refresh();
+		
 	}
 }

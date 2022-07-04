@@ -12,7 +12,7 @@ import javafx.collections.ObservableList;
 
 public class ArbreBinaire {
 
-	public static ObservableList<Stagiaire> stagiaires =FXCollections.observableArrayList();
+	public static ObservableList<Stagiaire> stagiaires = FXCollections.observableArrayList();
 
 	public void importFichier() {
 		try {
@@ -28,7 +28,7 @@ public class ArbreBinaire {
 				br.readLine();
 				stagiaires.add(stagiaire);
 			}
-			//System.out.println("*****Liste stagiaires*****\n" + stagiaires);
+			// System.out.println("*****Liste stagiaires*****\n" + stagiaires);
 			br.close();
 			fr.close();
 		} catch (IOException ex) {
@@ -48,7 +48,7 @@ public class ArbreBinaire {
 	}
 
 	public List<Stagiaire> affichageInfixe() throws IOException {
-		
+
 		RandomAccessFile raf = new RandomAccessFile("src/mesFichiers/listeStagiaires.bin", "rw");
 		List<Stagiaire> stagiaires = new ArrayList<>();
 		if (raf.length() != 0) {
@@ -61,7 +61,7 @@ public class ArbreBinaire {
 	public void ajouterRacine(Noeud noeud) throws IOException {
 
 		RandomAccessFile raf = new RandomAccessFile("src/mesFichiers/listeStagiaires.bin", "rw");
-		//System.out.println("ajouter " + noeud.getStagiaire().nom);
+		// System.out.println("ajouter " + noeud.getStagiaire().nom);
 		if (raf.length() == 0) {
 			raf.seek(0);
 			Noeud.ecritureBinaire(raf, noeud);
@@ -100,18 +100,21 @@ public class ArbreBinaire {
 		}
 	}
 
-	public void chercherValeur(Stagiaire valeurAChercher, RandomAccessFile raf) {
+	public ObservableList<Stagiaire> chercherValeur(Stagiaire valeurAChercher, RandomAccessFile raf) {
+
+		ObservableList<Stagiaire> stagiaires = FXCollections.observableArrayList();
+
 		try {
-			List<Stagiaire> stagiaires = new ArrayList<>();
+
 			raf.seek(0);
 			Noeud noeud = Noeud.lectureNoeud(raf);
-			noeud.chercherValeur(valeurAChercher, raf, stagiaires);
+			stagiaires =  noeud.chercherValeur(valeurAChercher, raf, stagiaires);
+
 		} catch (IOException e) {
 
 			e.printStackTrace();
 		}
+		return stagiaires;
 	}
-
-	
 
 }

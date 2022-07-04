@@ -26,7 +26,7 @@ public class Main extends Application {
 	arbre = new ArbreBinaire();
 	try {
 		 raf = new RandomAccessFile("src/mesFichiers/listeStagiaires.bin", "rw");
-		 raf.setLength(0);
+		
 	} catch (IOException e) {
 	
 		e.printStackTrace();
@@ -49,13 +49,14 @@ public class Main extends Application {
 	}
 
 	public static void main(String[] args) throws IOException {
-		
-		arbre.importFichier();
-		System.out.println("nb de stagiaires à ajouter : " + ArbreBinaire.stagiaires.size());
-		for (int i = 0; i < ArbreBinaire.stagiaires.size(); i++) {
-			arbre.ajouterRacine(new Noeud(ArbreBinaire.stagiaires.get(i), -1, -1));
-		
-
+		//RandomAccessFile raf = new RandomAccessFile("src/mesFichiers/listeStagiaires.bin", "rw");
+		if (raf.length() == 0) {
+			System.out.println("fichier binaire vide");
+			arbre.importFichier();
+			System.out.println("nb de stagiaires à ajouter : " + ArbreBinaire.stagiaires.size());
+			for (int i = 0; i < ArbreBinaire.stagiaires.size(); i++) {
+				arbre.ajouterRacine(new Noeud(ArbreBinaire.stagiaires.get(i), -1, -1));
+			}
 		}
 		launch(args);
 	}
