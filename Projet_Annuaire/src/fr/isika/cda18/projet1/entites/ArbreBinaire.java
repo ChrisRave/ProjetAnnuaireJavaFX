@@ -61,7 +61,7 @@ public class ArbreBinaire {
 	public void ajouterRacine(Noeud noeud) throws IOException {
 
 		RandomAccessFile raf = new RandomAccessFile("src/mesFichiers/listeStagiaires.bin", "rw");
-		// System.out.println("ajouter " + noeud.getStagiaire().nom);
+
 		if (raf.length() == 0) {
 			raf.seek(0);
 			Noeud.ecritureBinaire(raf, noeud);
@@ -100,6 +100,19 @@ public class ArbreBinaire {
 		}
 	}
 
+	// changer return si besoin
+	public void supprimerNoeud(RandomAccessFile raf, Stagiaire stagiaireASupprimer) {
+		try {
+			raf.seek(0);
+			Noeud noeud = Noeud.lectureNoeud(raf);
+			System.out.println(noeud);
+			System.out.println(stagiaireASupprimer);
+			noeud.supprimerNoeud(raf, stagiaireASupprimer, -1);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
 	public ObservableList<Stagiaire> chercherValeur(Stagiaire valeurAChercher, RandomAccessFile raf) {
 
 		ObservableList<Stagiaire> stagiaires = FXCollections.observableArrayList();
@@ -108,7 +121,7 @@ public class ArbreBinaire {
 
 			raf.seek(0);
 			Noeud noeud = Noeud.lectureNoeud(raf);
-			stagiaires =  noeud.chercherValeur(valeurAChercher, raf, stagiaires);
+			stagiaires = noeud.chercherValeur(valeurAChercher, raf, stagiaires);
 
 		} catch (IOException e) {
 
@@ -117,4 +130,14 @@ public class ArbreBinaire {
 		return stagiaires;
 	}
 
+	public void modifierStagiaire (RandomAccessFile raf, Stagiaire stagiaireAmodifier,Noeud nouveauStagiaire) {
+		
+	supprimerNoeud(raf, stagiaireAmodifier); 
+	try {
+		ajouterStagiaire(raf, nouveauStagiaire);
+	} catch (IOException e) {
+		e.printStackTrace();
+	}
+		
+	}
 }

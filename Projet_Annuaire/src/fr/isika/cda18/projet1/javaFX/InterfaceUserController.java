@@ -56,6 +56,8 @@ public class InterfaceUserController implements Initializable {
 	@FXML
 	private Button btnChercherStagiaire;
 	
+
+	
 	
 	ArbreBinaire arbre = new ArbreBinaire();
 
@@ -123,7 +125,7 @@ public class InterfaceUserController implements Initializable {
 		Stagiaire stagiaire = new Stagiaire(nom, prenom, departement, promotion, annee);
 		ObservableList<Stagiaire > resultat = arbre.chercherValeur(stagiaire, raf);
 	
-		ListeDesStagiairesController.tblStagiaires.setItems(resultat); 
+		//ListeDesStagiairesController.tblStagiaires.setItems(resultat); 
 		
 		Stage primaryStage = (Stage) btnChercherStagiaire.getScene().getWindow();
 		AnchorPane interfaceListe = (AnchorPane) FXMLLoader.load(getClass().getResource("ListeStagiaires.fxml"));
@@ -139,6 +141,7 @@ public class InterfaceUserController implements Initializable {
 		reinitialisationFormulaire();
 		
 	}
+	
 	public void reinitialisationFormulaire() {
 
 		txtNom.clear();

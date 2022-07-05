@@ -20,23 +20,25 @@ import javafx.fxml.FXMLLoader;
 public class Main extends Application {
 
 	public static ArbreBinaire arbre;
-	public static RandomAccessFile raf ;
+	public static RandomAccessFile raf;
 	
+	 static Utilisateur user  = new Utilisateur(false); 
+
 	static {
-	arbre = new ArbreBinaire();
-	try {
-		 raf = new RandomAccessFile("src/mesFichiers/listeStagiaires.bin", "rw");
-		
-	} catch (IOException e) {
-	
-		e.printStackTrace();
+		arbre = new ArbreBinaire();
+		try {
+			raf = new RandomAccessFile("src/mesFichiers/listeStagiaires.bin", "rw");
+
+		} catch (IOException e) {
+
+			e.printStackTrace();
+		}
 	}
-	}
-	
+
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			
+
 			BorderPane root = (BorderPane) FXMLLoader.load(getClass().getResource("InterfaceAccueil.fxml"));
 			Scene scene = new Scene(root, 1000, 600);
 
@@ -49,11 +51,9 @@ public class Main extends Application {
 	}
 
 	public static void main(String[] args) throws IOException {
-		//RandomAccessFile raf = new RandomAccessFile("src/mesFichiers/listeStagiaires.bin", "rw");
+
 		if (raf.length() == 0) {
-			System.out.println("fichier binaire vide");
 			arbre.importFichier();
-			System.out.println("nb de stagiaires à ajouter : " + ArbreBinaire.stagiaires.size());
 			for (int i = 0; i < ArbreBinaire.stagiaires.size(); i++) {
 				arbre.ajouterRacine(new Noeud(ArbreBinaire.stagiaires.get(i), -1, -1));
 			}

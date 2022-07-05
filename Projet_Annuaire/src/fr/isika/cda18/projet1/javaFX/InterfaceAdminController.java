@@ -54,6 +54,17 @@ public class InterfaceAdminController {
 	ArbreBinaire arbre = new ArbreBinaire();
 	
 	@FXML
+	private void btnRetourAccueilHandler(Event e) throws IOException {
+
+		Stage primaryStage = (Stage) btnRetourAccueil.getScene().getWindow();
+		BorderPane interfaceAdmin = (BorderPane) FXMLLoader.load(getClass().getResource("InterfaceAccueil.fxml"));
+		Scene adminScene = new Scene(interfaceAdmin, 1030, 600);
+		adminScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+		primaryStage.setScene(adminScene);
+
+	}
+	
+	@FXML
 	private void btnChercherStagiaireHandler(Event e) throws IOException {
 		
 		RandomAccessFile raf = new RandomAccessFile("src/mesFichiers/listeStagiaires.bin", "rw");
@@ -66,7 +77,7 @@ public class InterfaceAdminController {
 		Stagiaire stagiaire = new Stagiaire(nom, prenom, departement, promotion, annee);
 		ObservableList<Stagiaire > resultat = arbre.chercherValeur(stagiaire, raf);
 	
-		ListeDesStagiairesController.tblStagiaires.setItems(resultat); 
+	//	ListeDesStagiairesController.tblStagiaires.setItems(resultat); 
 		
 		Stage primaryStage = (Stage) btnChercherStagiaire.getScene().getWindow();
 		AnchorPane interfaceListe = (AnchorPane) FXMLLoader.load(getClass().getResource("ListeStagiaires.fxml"));
@@ -84,16 +95,7 @@ public class InterfaceAdminController {
 		
 	}
 
-	@FXML
-	private void btnRetourAcceuilHandler(Event e) throws IOException {
-
-		Stage primaryStage = (Stage) btnRetourAccueil.getScene().getWindow();
-		BorderPane interfaceAdmin = (BorderPane) FXMLLoader.load(getClass().getResource("InterfaceAccueil.fxml"));
-		Scene adminScene = new Scene(interfaceAdmin, 1030, 600);
-		adminScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-		primaryStage.setScene(adminScene);
-
-	}
+	
 
 
 	@FXML
@@ -121,8 +123,10 @@ public class InterfaceAdminController {
 		
 
 		reinitialisationFormulaire();
+		
 
-	}
+	} 
+	
 
 	public void reinitialisationFormulaire() {
 

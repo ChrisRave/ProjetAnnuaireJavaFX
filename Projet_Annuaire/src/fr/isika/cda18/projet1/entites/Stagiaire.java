@@ -91,7 +91,6 @@ public class Stagiaire implements InterfaceTailles {
 		return promoLong;
 	}
 	public String agrandirDepartement() {
-		//System.out.println("departement de départ " + this.departement);
 		String departementLong = this.departement;
 		for (int i = departement.length(); i < TAILLE_DEPARTEMENT; i++) {
 			departementLong += " ";

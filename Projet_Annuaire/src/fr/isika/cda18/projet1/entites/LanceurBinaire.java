@@ -7,7 +7,7 @@ import java.io.RandomAccessFile;
 public class LanceurBinaire {
 
 	public static void main(String[] args) throws IOException {
-		
+
 		try {
 			RandomAccessFile raf = new RandomAccessFile("src/mesFichiers/listeStagiaires.bin", "rw");
 			raf.setLength(0);
@@ -18,12 +18,12 @@ public class LanceurBinaire {
 			for (int i = 0; i < ArbreBinaire.stagiaires.size(); i++) {
 				arbre.ajouterRacine(new Noeud(ArbreBinaire.stagiaires.get(i), -1, -1));
 			}
-			
 
 			arbre.affichageInfixe();
-			raf.seek(0); 
 			
-		
+			raf.seek(0);
+			
+			
 			raf.close();
 		} catch (IOException e) {
 			e.printStackTrace();

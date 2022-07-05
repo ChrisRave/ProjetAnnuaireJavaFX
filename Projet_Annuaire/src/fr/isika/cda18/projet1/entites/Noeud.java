@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.util.List;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 public class Noeud implements InterfaceTailles {
@@ -98,9 +99,9 @@ public class Noeud implements InterfaceTailles {
 				}
 				int filsGauche = raf.readInt();
 				int filsDroit = raf.readInt();
-//				System.out
+//			System.out
 //						.println("Nom :" + nom.trim() + "\t Prenom :" + prenom.trim() + "\t Departement :" + departement
-//								+ "\t Promotion :" + promo.trim() + "\t Annee : " + annee + filsDroit + filsGauche);
+//							+ "\t Promotion :" + promo.trim() + "\t Annee : " + annee + filsDroit + filsGauche);
 			}
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
@@ -169,7 +170,7 @@ public class Noeud implements InterfaceTailles {
 			Noeud filsGauche = lectureNoeud(raf);
 			filsGauche.affichageInfixe(raf, stagiaires);
 		}
-	//	System.out.println(this);
+		// System.out.println(this);
 		stagiaires.add(this.stagiaire);
 
 		if (this.getFilsDroit() != -1) {
@@ -206,21 +207,21 @@ public class Noeud implements InterfaceTailles {
 				critere++;
 				if (this.getStagiaire().getDepartement().equals(valeurAChercher.getDepartement())) {
 					verification++;
-					
+
 				}
 			}
 			if (!(valeurAChercher.getPrenom().equals(""))) {
 				critere++;
 				if (this.getStagiaire().getPrenom().equals(valeurAChercher.getPrenom())) {
 					verification++;
-					
+
 				}
 			}
 			if (!(valeurAChercher.getAnnee().equals(""))) {
 				critere++;
 				if (this.getStagiaire().getAnnee().equals(valeurAChercher.getAnnee())) {
 					verification++;
-					
+
 				}
 			}
 			if (critere == verification) {
@@ -241,32 +242,27 @@ public class Noeud implements InterfaceTailles {
 
 	public void supprimerNoeud(RandomAccessFile raf, Stagiaire stagiaireASupprimer, int indexParent)
 			throws IOException {
-
 		int indexNoeud = (int) ((raf.getFilePointer() - Stagiaire.TAILLE_OBJET_OCTET) / Stagiaire.TAILLE_OBJET_OCTET);
-
 		if (this.getStagiaire().getNom().compareTo(stagiaireASupprimer.getNom()) > 0) {
 			if (this.filsGauche != -1) {
 				raf.seek(this.getFilsGauche() * Stagiaire.TAILLE_OBJET_OCTET);
 				Noeud filsGauche = lectureNoeud(raf);
 				filsGauche.supprimerNoeud(raf, stagiaireASupprimer, indexNoeud);
-
 			}
-
 		} else if (this.getStagiaire().getNom().compareTo(stagiaireASupprimer.getNom()) < 0) {
 			if (this.filsDroit != -1) {
 				raf.seek(this.getFilsDroit() * Stagiaire.TAILLE_OBJET_OCTET);
 				Noeud filsDroit = lectureNoeud(raf);
 				filsDroit.supprimerNoeud(raf, stagiaireASupprimer, indexNoeud);
 			}
-
 		} else {
+
+			raf.seek(indexNoeud * Stagiaire.TAILLE_OBJET_OCTET);
 			this.supprimerRacine(raf, stagiaireASupprimer, indexParent);
 		}
-
 	}
 
 	public Noeud noeudSuccesseur(RandomAccessFile raf) throws IOException {
-
 		Noeud racine = Noeud.lectureNoeud(raf);
 		if (racine.getFilsDroit() == -1) {
 			raf.seek(raf.getFilePointer() - 4);
@@ -276,20 +272,21 @@ public class Noeud implements InterfaceTailles {
 			Noeud noeudCourant = lectureNoeud(raf);
 			while (noeudCourant.filsGauche != -1) {
 				raf.seek(this.getFilsGauche() * Stagiaire.TAILLE_OBJET_OCTET);
-
 				return noeudCourant.noeudSuccesseur(raf);
 			}
 		}
 		return racine;
 	}
 
+	// modifier méthode si nécessaire
 	private void supprimerRacine(RandomAccessFile raf, Stagiaire stagiaireASupprimer, int indexParent)
 			throws IOException {
 
+		Noeud noeud = Noeud.lectureNoeud(raf);
 		int indexNoeud = (int) ((raf.getFilePointer() - Stagiaire.TAILLE_OBJET_OCTET) / Stagiaire.TAILLE_OBJET_OCTET);
-
-		if (this.filsGauche == -1 && this.filsDroit == -1) {
-			raf.seek(indexParent * TAILLE_OBJET_OCTET);
+		if (noeud.filsGauche == -1 && noeud.filsDroit == -1) {
+			raf.seek(indexParent * Stagiaire.TAILLE_OBJET_OCTET);// code modifié raf.seek(indexParent *
+			System.out.println("test"); // TAILLE_OBJET_OCTET);
 			Noeud parent = lectureNoeud(raf);
 			if (parent.stagiaire.getNom().compareTo(stagiaireASupprimer.getNom()) > 0) {
 				raf.seek(raf.getFilePointer() - 8);
@@ -298,14 +295,13 @@ public class Noeud implements InterfaceTailles {
 				raf.seek(raf.getFilePointer() - 4);
 				raf.writeInt(-1);
 			}
-		} else if (this.filsGauche != -1 && this.filsDroit == -1) {
-			raf.seek(this.getFilsGauche() * Stagiaire.TAILLE_OBJET_OCTET);
+		} else if (noeud.filsGauche != -1 && noeud.filsDroit == -1) {
+			raf.seek(noeud.getFilsGauche() * Stagiaire.TAILLE_OBJET_OCTET);
 			Noeud filsGauche = lectureNoeud(raf);
 			raf.seek(indexNoeud * Stagiaire.TAILLE_OBJET_OCTET);
 			ecritureBinaire(raf, filsGauche);
-
-		} else if (this.filsGauche == -1 && this.filsDroit != -1) {
-			raf.seek(this.getFilsDroit() * Stagiaire.TAILLE_OBJET_OCTET);
+		} else if (noeud.filsGauche == -1 && noeud.filsDroit != -1) {
+			raf.seek(noeud.getFilsDroit() * Stagiaire.TAILLE_OBJET_OCTET);
 			Noeud filsDroit = lectureNoeud(raf);
 			raf.seek(indexNoeud * Stagiaire.TAILLE_OBJET_OCTET);
 			ecritureBinaire(raf, filsDroit);
@@ -318,6 +314,6 @@ public class Noeud implements InterfaceTailles {
 			Noeud noeudDroit = lectureNoeud(raf);
 			noeudDroit.supprimerNoeud(raf, noeudSuccesseur.getStagiaire(), indexNoeud);
 		}
-
 	}
+
 }
